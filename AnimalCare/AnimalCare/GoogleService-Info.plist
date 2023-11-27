@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBcwCCTa4J3viMtkz6q9LScVSSDtwc7W0U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>528947944480</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>by.company.AnimalCare</string>
+	<key>PROJECT_ID</key>
+	<string>animalcare-5c3ed</string>
+	<key>STORAGE_BUCKET</key>
+	<string>animalcare-5c3ed.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:528947944480:ios:8fdca0f5577b7e505a3045</string>
+</dict>
+</plist>
