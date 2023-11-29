@@ -6,18 +6,38 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class MainVC: UIViewController {
-
+    
+    // MARK: - @IBOutlets
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passTF: UITextField!
+    @IBOutlet weak var errorLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
-    // MARK: - @IBActions
-    @IBAction func registrationAction(_ sender: UIBarButtonItem) {
-    }
+    // MARK: - @IBAction
     
     @IBAction func signInAction(_ sender: UIButton) {
+        guard let email = emailTF.text, !email.isEmpty,
+              let pass = passTF.text, !pass.isEmpty
+        else {
+            errorLbl.isHidden = false
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: pass) { [weak self] user, error in
+            if let _ = error {
+                self?.errorLbl.isHidden = false
+            } else if let _ = user {
+                // переход на другой экран
+            }
+        }
     }
     
     /*
@@ -29,20 +49,8 @@ class MainVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    private func alertForRegistrationAndSignIn(title: String) {
-        
-        let alert = UIAlertController(title: title, message: "Введите данные", preferredStyle: .alert)
-        var phoneTF: UITextField!
-        var passTF: UITextField!
-        
-        alert.addTextField { textField in
-            phoneTF = textField
-            phoneTF.placeholder = "Введите ваш номер телефона"
-        }
-        alert.addTextField { textField in
-            passTF = textField
-            passTF.placeholder = "Введите пароль"
-        }
+    // MARK: - Privates
+    private func setupUI() {
+        errorLbl.isHidden = true
     }
 }

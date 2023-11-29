@@ -49,6 +49,7 @@
 		C721FBB22B154B6600893ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB12B154B6600893ADF /* User.swift */; };
 		C721FBB42B154B8000893ADF /* Dogwalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB32B154B8000893ADF /* Dogwalker.swift */; };
 		C721FBB62B154B9C00893ADF /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB52B154B9C00893ADF /* Dog.swift */; };
+		C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F43522B17F9F100C893BB /* RegistrationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		C721FBB12B154B6600893ADF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C721FBB32B154B8000893ADF /* Dogwalker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dogwalker.swift; sourceTree = "<group>"; };
 		C721FBB52B154B9C00893ADF /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		C73F43522B17F9F100C893BB /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				C721FB572B153B7800893ADF /* Main.storyboard */,
 				C721FBA22B1545F500893ADF /* MainVC.swift */,
 				C721FBA42B15462100893ADF /* InfoVC.swift */,
+				C73F43522B17F9F100C893BB /* RegistrationVC.swift */,
 			);
 			path = "MainVC + Info";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				C721FBAA2B15488100893ADF /* ProfileVC.swift in Sources */,
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
 				C721FBB42B154B8000893ADF /* Dogwalker.swift in Sources */,
+				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
 				C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */,
 				C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */,
 				C721FBB62B154B9C00893ADF /* Dog.swift in Sources */,
