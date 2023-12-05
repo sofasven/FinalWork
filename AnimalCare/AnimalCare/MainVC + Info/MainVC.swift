@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class MainVC: UIViewController {
     
+    var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle!
+    
     // MARK: - @IBOutlets
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
@@ -19,6 +21,26 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener({ [weak self] _, user in
+            guard let _ = user else { return }
+            self?.goToProfile()
+        })
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        emailTF.delegate = self
+        passTF.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+        Auth.auth().removeStateDidChangeListener(authStateDidChangeListenerHandle)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTF.text = nil
+        passTF.text = nil
     }
     
     // MARK: - @IBAction
@@ -35,22 +57,33 @@ class MainVC: UIViewController {
             if let _ = error {
                 self?.errorLbl.isHidden = false
             } else if let _ = user {
-                // переход на другой экран
+                self?.goToProfile()
             }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     // MARK: - Privates
     private func setupUI() {
         errorLbl.isHidden = true
+    }
+    
+    @objc
+    private func kbWillShow(notification: Notification){
+        view.frame.origin.y = 0
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y -= keyboardSize.height / 2
+        }
+    }
+    
+    @objc
+    private func kbWillHide(){
+        view.frame.origin.y = 0
+   }
+    
+    private func goToProfile() {
+        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+        let profileVC = stor.instantiateViewController(withIdentifier: "ProfileVC")
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }

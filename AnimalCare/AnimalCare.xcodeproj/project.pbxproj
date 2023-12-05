@@ -47,9 +47,10 @@
 		C721FBAD2B1548E400893ADF /* ServiceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */; };
 		C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBAE2B15493700893ADF /* ServiceVC.swift */; };
 		C721FBB22B154B6600893ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB12B154B6600893ADF /* User.swift */; };
-		C721FBB42B154B8000893ADF /* Dogwalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB32B154B8000893ADF /* Dogwalker.swift */; };
-		C721FBB62B154B9C00893ADF /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB52B154B9C00893ADF /* Dog.swift */; };
+		C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */; };
+		C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */; };
 		C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F43522B17F9F100C893BB /* RegistrationVC.swift */; };
+		C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78384182B1F103300638FCC /* RegistrationVCExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,9 +69,10 @@
 		C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceStoryboard.storyboard; sourceTree = "<group>"; };
 		C721FBAE2B15493700893ADF /* ServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceVC.swift; sourceTree = "<group>"; };
 		C721FBB12B154B6600893ADF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C721FBB32B154B8000893ADF /* Dogwalker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dogwalker.swift; sourceTree = "<group>"; };
-		C721FBB52B154B9C00893ADF /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExt.swift; sourceTree = "<group>"; };
+		C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		C73F43522B17F9F100C893BB /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		C78384182B1F103300638FCC /* RegistrationVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVCExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		C721FB502B153B7800893ADF /* AnimalCare */ = {
 			isa = PBXGroup;
 			children = (
+				C78384172B1F101B00638FCC /* Extensions */,
 				C721FBB02B154B5700893ADF /* Models */,
 				C721FBA12B15416A00893ADF /* MainVC + Info */,
 				C721FBA62B15483600893ADF /* Profile */,
@@ -168,6 +171,7 @@
 			children = (
 				C721FBA72B15485500893ADF /* ProfileStoryboard.storyboard */,
 				C721FBA92B15488100893ADF /* ProfileVC.swift */,
+				C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -185,10 +189,17 @@
 			isa = PBXGroup;
 			children = (
 				C721FBB12B154B6600893ADF /* User.swift */,
-				C721FBB32B154B8000893ADF /* Dogwalker.swift */,
-				C721FBB52B154B9C00893ADF /* Dog.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C78384172B1F101B00638FCC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C78384182B1F103300638FCC /* RegistrationVCExt.swift */,
+				C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,14 +310,15 @@
 			files = (
 				C721FBAA2B15488100893ADF /* ProfileVC.swift in Sources */,
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
-				C721FBB42B154B8000893ADF /* Dogwalker.swift in Sources */,
 				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
 				C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */,
+				C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */,
+				C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */,
 				C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */,
-				C721FBB62B154B9C00893ADF /* Dog.swift in Sources */,
 				C721FBA32B1545F500893ADF /* MainVC.swift in Sources */,
 				C721FB542B153B7800893ADF /* SceneDelegate.swift in Sources */,
 				C721FBB22B154B6600893ADF /* User.swift in Sources */,
+				C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

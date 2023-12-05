@@ -210,11 +210,12 @@
                                 <segue destination="SXY-nP-WJm" kind="show" id="DUP-S0-eyA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5cZ-YK-NcI">
+                        <barButtonItem key="rightBarButtonItem" id="5cZ-YK-NcI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="k5b-Kz-YdI">
                                 <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="О нас"/>
                                 <buttonConfiguration key="configuration" style="plain" title="О нас"/>
                                 <connections>
                                     <segue destination="qcx-Pp-yvy" kind="show" id="0MW-1N-q33"/>
@@ -536,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCs-Ie-5wY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="3"/>
+            <point key="canvasLocation" x="2654" y="432"/>
         </scene>
     </scenes>
     <resources>

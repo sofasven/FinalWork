@@ -11,9 +11,6 @@ import Firebase
 class RegistrationVC: UIViewController {
     
     var ref: DatabaseReference!
-    var category: String {
-        categorySC.selectedSegmentIndex == 0 ? "users" : "dogwalkers"
-    }
     
     // MARK: - @IBOutlets
     @IBOutlet weak var categorySC: UISegmentedControl!
@@ -24,7 +21,16 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        ref = Database.database().reference(withPath: category)
+        ref = Database.database().reference(withPath: "users")
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        emailTF.delegate = self
+        passTF.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - @IBAction
@@ -33,12 +39,20 @@ class RegistrationVC: UIViewController {
               let password = passTF.text, !password.isEmpty else { return }
         // create new user
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
-            if let user = user {
+            if let _ = error {
+                self?.errorLbl.isHidden = false
+            } else if let user = user {
                 let userRef = self?.ref.child(user.user.uid)
                 userRef?.setValue(["email": user.user.email])
-                self?.navigationController?.popToRootViewController(animated: true)
-            } else if let _ = error {
-                self?.errorLbl.isHidden = false
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+                    if let _ = error {
+                        self?.errorLbl.isHidden = false
+                    } else if let _ = user {
+                        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+                        let editProfileVC = stor.instantiateViewController(withIdentifier: "EditProfileVC")
+                        self?.navigationController?.pushViewController(editProfileVC, animated: true)
+                    }
+                }
             }
         }
     }
@@ -47,5 +61,18 @@ class RegistrationVC: UIViewController {
     private func setupUI() {
         errorLbl.isHidden = true
     }
+    
+    @objc
+    private func kbWillShow(notification: Notification){
+        view.frame.origin.y = 0
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y -= keyboardSize.height / 2
+        }
+    }
+    
+    @objc
+    private func kbWillHide(){
+        view.frame.origin.y = 0
+   }
 
 }
