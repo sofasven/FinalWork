@@ -10,7 +10,7 @@ import Firebase
 
 class RegistrationVC: UIViewController {
     
-    var ref: DatabaseReference!
+    var role: String = ""
     
     // MARK: - @IBOutlets
     @IBOutlet weak var categorySC: UISegmentedControl!
@@ -21,7 +21,6 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        ref = Database.database().reference(withPath: "users")
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
         emailTF.delegate = self
@@ -37,24 +36,13 @@ class RegistrationVC: UIViewController {
     @IBAction func registrationAction(_ sender: UIButton) {
         guard let email = emailTF.text, !email.isEmpty,
               let password = passTF.text, !password.isEmpty else { return }
-        // create new user
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
-            if let _ = error {
-                self?.errorLbl.isHidden = false
-            } else if let user = user {
-                let userRef = self?.ref.child(user.user.uid)
-                userRef?.setValue(["email": user.user.email])
-                Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
-                    if let _ = error {
-                        self?.errorLbl.isHidden = false
-                    } else if let _ = user {
-                        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
-                        let editProfileVC = stor.instantiateViewController(withIdentifier: "EditProfileVC")
-                        self?.navigationController?.pushViewController(editProfileVC, animated: true)
-                    }
-                }
-            }
-        }
+        role = categorySC.selectedSegmentIndex == 0 ? Role.client.rawValue : Role.dogwalker.rawValue
+        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+        guard let editProfileVC = stor.instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC else { return }
+        editProfileVC.email = email
+        editProfileVC.password = password
+        editProfileVC.role = role
+        self.navigationController?.pushViewController(editProfileVC, animated: true)
     }
     
     // MARK: - Privates

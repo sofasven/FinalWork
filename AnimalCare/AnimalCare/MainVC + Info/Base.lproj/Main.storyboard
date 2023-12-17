@@ -375,31 +375,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWc-bf-gLJ">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="400" height="715"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq8-69-IMz">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1070.3333333333333"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="1070.3333333333333"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="065-xz-2gN">
-                                                <rect key="frame" x="25" y="10.000000000000057" width="343" height="1010.3333333333335"/>
+                                                <rect key="frame" x="25" y="10.000000000000057" width="350" height="1010.3333333333335"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gTc-da-tCl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="284.33333333333331"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="284.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Из чего состоит выгул собак?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is7-Cc-NSD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="Fkc-E8-t7A">
-                                                                <rect key="frame" x="0.0" y="44" width="343" height="200"/>
+                                                                <rect key="frame" x="0.0" y="44" width="350" height="200"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numbers" translatesAutoresizingMaskIntoConstraints="NO" id="leh-UP-VTt">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="200"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="28.333333333333332" height="200"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 минут прогулки  Веселое времяпрепровождение  Кормление  Моем лапки  Фото/видео отчет" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzt-pR-F2O">
-                                                                        <rect key="frame" x="50.666666666666657" y="0.0" width="292.33333333333337" height="200"/>
+                                                                        <rect key="frame" x="51.333333333333343" y="0.0" width="298.66666666666663" height="200"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -412,7 +412,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стоимость от 15 рублей в час" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-Ka-gyO">
-                                                                <rect key="frame" x="0.0" y="264" width="343" height="20.333333333333314"/>
+                                                                <rect key="frame" x="0.0" y="264" width="350" height="20.333333333333314"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -420,22 +420,22 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7pZ-iy-PNV">
-                                                        <rect key="frame" x="0.0" y="309.33333333333337" width="343" height="308.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="309.33333333333337" width="350" height="308.33333333333337"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Из чего состоит домашняя передержка животных?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-3H-7tw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="48"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="oyA-qG-iBY">
-                                                                <rect key="frame" x="0.0" y="68" width="343" height="200"/>
+                                                                <rect key="frame" x="0.0" y="68" width="350" height="200"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numbers" translatesAutoresizingMaskIntoConstraints="NO" id="jFc-kK-hvQ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="200"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="28.333333333333332" height="200"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deo-c9-iAG">
-                                                                        <rect key="frame" x="50.666666666666657" y="0.0" width="292.33333333333337" height="200"/>
+                                                                        <rect key="frame" x="51.333333333333343" y="0.0" width="298.66666666666663" height="200"/>
                                                                         <string key="text">Знакомство  Вы привозите питомца к ситтеру или ситтер приезжает к вам Прогулки 2 раза в день по привычному расписанию Уход и забота  Фото/видео отчет каждый день</string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -449,7 +449,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стоимость от 30 рублей за сутки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH2-7e-dLq">
-                                                                <rect key="frame" x="0.0" y="288.00000000000006" width="343" height="20.333333333333314"/>
+                                                                <rect key="frame" x="0.0" y="288.00000000000006" width="350" height="20.333333333333314"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -457,22 +457,22 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-4t-TtX">
-                                                        <rect key="frame" x="0.0" y="642.66666666666663" width="343" height="308.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="642.66666666666663" width="350" height="308.33333333333337"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Из чего состоит дневная няня для животных?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZx-M3-9hL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="48"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="NhZ-y8-Dsp">
-                                                                <rect key="frame" x="0.0" y="68" width="343" height="200"/>
+                                                                <rect key="frame" x="0.0" y="68" width="350" height="200"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numbers" translatesAutoresizingMaskIntoConstraints="NO" id="8uI-QU-UuU">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="200"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="28.333333333333332" height="200"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTk-BJ-h2b">
-                                                                        <rect key="frame" x="50.666666666666657" y="0.0" width="292.33333333333337" height="200"/>
+                                                                        <rect key="frame" x="51.333333333333343" y="0.0" width="298.66666666666663" height="200"/>
                                                                         <string key="text">Няня приходит к вам или вы привозите питомца к няне Няня проводит с питомцем от 1 до 8 часов Игры и кормление  Уборка лотка/выгул  Фото/видео отчет каждый день</string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -486,7 +486,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стоимость от 35 рублей за посещение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfA-0O-oEC">
-                                                                <rect key="frame" x="0.0" y="288.00000000000011" width="343" height="20.333333333333314"/>
+                                                                <rect key="frame" x="0.0" y="288.00000000000011" width="350" height="20.333333333333314"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -494,7 +494,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4u-b0-Vd4">
-                                                        <rect key="frame" x="0.0" y="976" width="343" height="34.333333333333371"/>
+                                                        <rect key="frame" x="0.0" y="976" width="350" height="34.333333333333371"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="gray" title="Вернуться и заказать услугу"/>
                                                         <connections>
