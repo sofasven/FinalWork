@@ -81,6 +81,8 @@ class EditProfileVC: UIViewController {
                     if let _ = error {
                         self?.errorLbl.isHidden = false
                     } else if let _ = user {
+                        let vc = UIViewController(nibName: "ProfileVC", bundle: nil)
+                        self?.navigationController?.popToViewController(vc, animated: true)
                     }
                 }
             }
@@ -147,7 +149,6 @@ class EditProfileVC: UIViewController {
         errorLbl.isHidden = true
         detailsStackView.isHidden = role == Role.client.rawValue
     }
-    
     
     
         /*
