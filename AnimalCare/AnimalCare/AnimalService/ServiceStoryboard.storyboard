@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AnimalCare-->
+        <scene sceneID="r1a-Hs-XWd">
+            <objects>
+                <viewController storyboardIdentifier="ServiceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zoe-Za-07M" customClass="ServiceVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qeD-Te-J1J">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPC-qY-wlg">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFB-0O-onY">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="774.33333333333337"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pets" translatesAutoresizingMaskIntoConstraints="NO" id="dw4-9T-XM6">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="VI4-Hd-jjX"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3UV-xR-8Md">
+                                                <rect key="frame" x="25" y="205" width="343" height="519.33333333333337"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0ng-q5-bFR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="65"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Я ищу сервис для..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-Wb-NpE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TVJ-vG-Z9N">
+                                                                <rect key="frame" x="0.0" y="34" width="343" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Собака"/>
+                                                                    <segment title="Кот"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-5k-zAi">
+                                                        <rect key="frame" x="0.0" y="95" width="343" height="65"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбор услуги" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq2-f3-t9n">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SFd-3Q-gQi">
+                                                                <rect key="frame" x="0.0" y="34" width="343" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Передержка"/>
+                                                                    <segment title="Выгул / Дневная няня"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="y13-gV-Bk7">
+                                                        <rect key="frame" x="0.0" y="190" width="343" height="68.333333333333314"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyU-d4-OK6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nB1-ea-xaz">
+                                                                <rect key="frame" x="0.0" y="34" width="343" height="34.333333333333343"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BwV-uk-zqC">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="34.333333333333336"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUf-aO-r0H">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="12" height="34.333333333333336"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxF-hM-VMa">
+                                                                                <rect key="frame" x="20" y="0.0" width="136.66666666666666" height="34.333333333333336"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="gray" image="calendar" catalog="system"/>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hvJ-45-fsQ">
+                                                                        <rect key="frame" x="176.66666666666663" y="0.0" width="166.33333333333337" height="34.333333333333336"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1A-um-0aV">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="22" height="34.333333333333336"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E32-it-0Xt">
+                                                                                <rect key="frame" x="30" y="0.0" width="136.33333333333334" height="34.333333333333336"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="gray" image="calendar" catalog="system"/>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="E32-it-0Xt" firstAttribute="width" secondItem="rxF-hM-VMa" secondAttribute="width" id="C6M-7O-q5j"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hP5-Zm-5DR">
+                                                        <rect key="frame" x="0.0" y="288.33333333333337" width="343" height="68"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jab-i3-Yfn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFl-ms-6Gu">
+                                                                <rect key="frame" x="0.0" y="34" width="343" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-nA-hzK">
+                                                        <rect key="frame" x="0.0" y="386.33333333333337" width="343" height="65"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размер" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULZ-a7-384">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="92Q-YF-Vrd">
+                                                                <rect key="frame" x="0.0" y="34" width="343" height="32"/>
+                                                                <segments>
+                                                                    <segment title="до 5 кг"/>
+                                                                    <segment title="до 20 кг"/>
+                                                                    <segment title="до 40 кг"/>
+                                                                    <segment title="40+ кг"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idY-tb-0Ha">
+                                                        <rect key="frame" x="0.0" y="481.33333333333337" width="343" height="38"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Поиск">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="dw4-9T-XM6" firstAttribute="leading" secondItem="UFB-0O-onY" secondAttribute="leading" id="7mS-LL-6Bm"/>
+                                            <constraint firstItem="3UV-xR-8Md" firstAttribute="leading" secondItem="UFB-0O-onY" secondAttribute="leading" constant="25" id="LVd-1N-WQH"/>
+                                            <constraint firstAttribute="bottom" secondItem="3UV-xR-8Md" secondAttribute="bottom" constant="50" id="Q6H-Cw-TfA"/>
+                                            <constraint firstAttribute="trailing" secondItem="dw4-9T-XM6" secondAttribute="trailing" id="Rnw-dx-waq"/>
+                                            <constraint firstAttribute="trailing" secondItem="3UV-xR-8Md" secondAttribute="trailing" constant="25" id="SH0-pO-H6N"/>
+                                            <constraint firstItem="dw4-9T-XM6" firstAttribute="top" secondItem="UFB-0O-onY" secondAttribute="top" id="ai4-bZ-MbO"/>
+                                            <constraint firstItem="3UV-xR-8Md" firstAttribute="top" secondItem="dw4-9T-XM6" secondAttribute="bottom" constant="5" id="mEf-Q2-jw3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UFB-0O-onY" firstAttribute="leading" secondItem="WPC-qY-wlg" secondAttribute="leading" id="PhS-jU-cUS"/>
+                                    <constraint firstItem="UFB-0O-onY" firstAttribute="top" secondItem="WPC-qY-wlg" secondAttribute="top" id="XzW-51-IRj"/>
+                                    <constraint firstAttribute="trailing" secondItem="UFB-0O-onY" secondAttribute="trailing" id="bhp-Ku-V9o"/>
+                                    <constraint firstAttribute="bottom" secondItem="UFB-0O-onY" secondAttribute="bottom" id="g2q-im-OJe"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="tBE-Od-VIA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bXg-gq-Uyq"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ofH-G8-ha1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UFB-0O-onY" firstAttribute="width" secondItem="qeD-Te-J1J" secondAttribute="width" id="7Ae-vD-v4c"/>
+                            <constraint firstItem="WPC-qY-wlg" firstAttribute="top" secondItem="ofH-G8-ha1" secondAttribute="top" id="BLz-7w-Wck"/>
+                            <constraint firstItem="ofH-G8-ha1" firstAttribute="trailing" secondItem="WPC-qY-wlg" secondAttribute="trailing" id="J9p-Uh-Mrr"/>
+                            <constraint firstItem="ofH-G8-ha1" firstAttribute="bottom" secondItem="WPC-qY-wlg" secondAttribute="bottom" id="qyY-3s-sEX"/>
+                            <constraint firstItem="WPC-qY-wlg" firstAttribute="leading" secondItem="ofH-G8-ha1" secondAttribute="leading" id="rE5-KE-h1U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AnimalCare" id="XIX-BY-tJc">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="text.justify" catalog="system" id="Yi5-Rw-0k2"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6x7-J5-nDk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792" y="678"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="pets" width="800" height="800"/>
+        <image name="text.justify" catalog="system" width="128" height="99"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
