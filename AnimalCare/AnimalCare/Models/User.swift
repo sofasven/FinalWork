@@ -16,6 +16,7 @@ struct User {
     let surname: String
     let phoneNumber: Int
     let age: Int
+    let city: String
     let address: String
     let sex: String
     let avatar: UIImage?
@@ -32,6 +33,7 @@ struct User {
          Constants.surnameKey: surname,
          Constants.phoneNumberKey: phoneNumber,
          Constants.ageKey: age,
+         Constants.cityKey: city,
          Constants.addressKey: address,
          Constants.sexKey: sex,
          Constants.avatarKey: avatar,
@@ -49,6 +51,7 @@ struct User {
         static let surnameKey = "surname"
         static let phoneNumberKey = "phoneNumber"
         static let ageKey = "age"
+        static let cityKey = "city"
         static let addressKey = "address"
         static let sexKey = "sex"
         static let avatarKey = "avatar"
@@ -70,11 +73,11 @@ struct Progress {
 }
 
 struct Details {
-    let typeOfService: TypesOfService
-    let petType: PetType
-    let petSize: PetSize
-    let priceOfWalk: String
-    let priceOfSitting: String
+    let typeOfService: TypesOfService?
+    let petType: PetType?
+    let petSize: [PetSize?]
+    let priceOfWalk: String?
+    let priceOfSitting: String?
 }
 
 enum TypesOfService: String {
@@ -93,9 +96,10 @@ enum PetSize: String {
 enum PetType: String {
     case dog = "Собака"
     case cat = "Кот"
+    case both = "Собака и кот"
 }
 
 struct Review {
-    let comment: String
-    let rating: Int
+    let comment: String?
+    let rating: Int?
 }
