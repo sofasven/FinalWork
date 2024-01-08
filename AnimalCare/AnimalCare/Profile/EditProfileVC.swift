@@ -16,6 +16,7 @@ class EditProfileVC: UIViewController {
     var email: String?
     var password: String?
     var role: String?
+    var currentUser: User?
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var surnameTF: UITextField!
@@ -75,12 +76,16 @@ class EditProfileVC: UIViewController {
                 self?.errorLbl.isHidden = false
             } else if let user = user {
                 let user = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumberInt, age: ageInt, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
+                self?.currentUser = user
                 let userRef = self?.ref.child(user.uid)
                 userRef?.setValue(user.convertToDictionary())
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                     if let _ = error {
                         self?.errorLbl.isHidden = false
                     } else if let _ = user {
+                        guard let profileVC = UIViewController(nibName: "ProfileVC", bundle: nil) as? ProfileVC else { return }
+                        profileVC.user = self?.currentUser
+                        self?.navigationController?.popToViewController(profileVC, animated: true)
                     }
                 }
             }
@@ -147,7 +152,6 @@ class EditProfileVC: UIViewController {
         errorLbl.isHidden = true
         detailsStackView.isHidden = role == Role.client.rawValue
     }
-    
     
     
         /*
