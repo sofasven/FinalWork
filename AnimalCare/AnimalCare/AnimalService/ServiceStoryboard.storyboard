@@ -210,7 +210,7 @@
         <!--Ситтеры-->
         <scene sceneID="z5T-6y-6x4">
             <objects>
-                <tableViewController id="sGb-Zj-fyX" sceneMemberID="viewController">
+                <tableViewController id="sGb-Zj-fyX" customClass="ListOfSittersTVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="iMK-oI-vub">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,13 +260,13 @@
         <!--Имя Фамилия-->
         <scene sceneID="RAT-FC-PNl">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qTD-R8-lng" customClass="ProfileVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qTD-R8-lng" customClass="SitterProfileVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NV3-oF-9ja">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXh-l1-Vr1">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="714.99999999999989"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJc-fg-P4W">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1364.6666666666667"/>
@@ -334,22 +334,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lZZ-AF-dqx">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Звезды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXR-eo-22j">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="256" height="20.333333333333332"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0x-Og-JLH">
-                                                                                <rect key="frame" x="266" y="0.0" width="77" height="20.333333333333332"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Звезды" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXR-eo-22j">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="w0x-Og-JLH" firstAttribute="width" secondItem="cXR-eo-22j" secondAttribute="width" multiplier="0.3" id="Edq-7X-j6X"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Средняя оценка на основании X голосов" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UV-zD-OiL">
                                                                         <rect key="frame" x="0.0" y="27.333333333333371" width="343" height="20.333333333333329"/>
@@ -531,9 +522,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="gray" title="Открыть комментарии"/>
-                                                                <connections>
-                                                                    <segue destination="01z-Ae-Eys" kind="show" id="hdU-uu-VLd"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Pg-jvl">
                                                                 <rect key="frame" x="0.0" y="44.333333333333258" width="343" height="34.333333333333343"/>
@@ -596,39 +584,10 @@
             </objects>
             <point key="canvasLocation" x="4611" y="677"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="SAX-yR-KT4">
-            <objects>
-                <tableViewController id="01z-Ae-Eys" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="7zD-F0-jQ8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3Xb-O7-IB1">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Xb-O7-IB1" id="RiO-oY-W5W">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="01z-Ae-Eys" id="MS7-nN-0Yc"/>
-                            <outlet property="delegate" destination="01z-Ae-Eys" id="ycI-R9-8LG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="lUu-lm-T9n"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="09H-oA-X4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5585" y="412"/>
-        </scene>
         <!--Ваш отзыв-->
         <scene sceneID="Ssf-dD-kmP">
             <objects>
-                <viewController id="QER-lg-jaX" customClass="FeedbackVC" customModule="CoffeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QER-lg-jaX" customClass="FeedbackVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cvw-Dg-a2l">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,7 +629,7 @@
                                                     <segment title="⭐️(5)"/>
                                                 </segments>
                                                 <connections>
-                                                    <action selector="segmentedControlAction:" destination="QER-lg-jaX" eventType="valueChanged" id="HhY-3M-Ppf"/>
+                                                    <action selector="segmentedControlAction:" destination="QER-lg-jaX" eventType="valueChanged" id="uHH-1V-mJZ"/>
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMu-YL-Gl5">
@@ -678,7 +637,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="Сохранить отзыв"/>
                                                 <connections>
-                                                    <action selector="saveAction:" destination="QER-lg-jaX" eventType="touchUpInside" id="WaK-kO-LHA"/>
+                                                    <action selector="saveAction:" destination="QER-lg-jaX" eventType="touchUpInside" id="ZEh-bh-EBC"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqV-ji-wEz">
@@ -701,10 +660,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ваш отзыв" id="qzM-sJ-ngf"/>
                     <connections>
-                        <outlet property="errorLbl" destination="AkL-hT-RI2" id="bT5-hR-Rg4"/>
-                        <outlet property="mark" destination="zI1-zz-9qb" id="0qM-CY-6BQ"/>
-                        <outlet property="saveBtn" destination="HMu-YL-Gl5" id="QOB-YU-hR3"/>
-                        <outlet property="textReview" destination="wZr-ph-rIL" id="0Et-G1-jPJ"/>
+                        <outlet property="errorLbl" destination="AkL-hT-RI2" id="5cS-O4-whh"/>
+                        <outlet property="mark" destination="zI1-zz-9qb" id="ozc-Te-QLS"/>
+                        <outlet property="saveBtn" destination="HMu-YL-Gl5" id="ona-uF-GYD"/>
+                        <outlet property="textReview" destination="wZr-ph-rIL" id="jO7-a5-kEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOi-37-TCv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

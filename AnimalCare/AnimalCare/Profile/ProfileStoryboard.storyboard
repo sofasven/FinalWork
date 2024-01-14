@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsH-mM-X1s">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="714.99999999999989"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gA0-Ky-LvA">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1488.6666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1533"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Fya-Dm-YJR">
-                                                <rect key="frame" x="25" y="10" width="343" height="1428.6666666666667"/>
+                                                <rect key="frame" x="25" y="10" width="343" height="1473"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Личный кабинет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQD-LV-Anj">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
@@ -65,6 +65,9 @@
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="Изменить фото" subtitle=""/>
+                                                                        <connections>
+                                                                            <action selector="changePhoto:" destination="hMp-o2-xFZ" eventType="touchUpInside" id="Hej-AS-HxR"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -97,22 +100,13 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dcR-QX-6US">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Звезды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTA-ig-dBr">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="256" height="20.333333333333332"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6A-h9-dYs">
-                                                                                <rect key="frame" x="266" y="0.0" width="77" height="20.333333333333332"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Звезды" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTA-ig-dBr">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="B6A-h9-dYs" firstAttribute="width" secondItem="jTA-ig-dBr" secondAttribute="width" multiplier="0.3" id="Xml-fT-tgj"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Средняя оценка на основании X голосов" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqv-oO-reE">
                                                                         <rect key="frame" x="0.0" y="27.333333333333371" width="343" height="20.333333333333329"/>
@@ -143,6 +137,9 @@
                                                                 <buttonConfiguration key="configuration" style="gray" title="УДАЛИТЬ АККАУНТ">
                                                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="deleteUserAction" destination="hMp-o2-xFZ" eventType="touchUpInside" id="Rnu-KH-9IZ"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -310,14 +307,22 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ea5-8L-zhn">
-                                                        <rect key="frame" x="0.0" y="1394.3333333333333" width="343" height="34.333333333333258"/>
+                                                        <rect key="frame" x="0.0" y="1394.3333333333333" width="343" height="78.666666666666742"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6H-Tf-fhg">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="gray" title="Открыть комментарии"/>
                                                                 <connections>
-                                                                    <segue destination="F1H-W3-qfj" kind="show" id="dL4-cb-HLu"/>
+                                                                    <action selector="seeFeedback" destination="hMp-o2-xFZ" eventType="touchUpInside" id="1CN-LM-5cd"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAX-lc-VtH">
+                                                                <rect key="frame" x="0.0" y="44.333333333333485" width="343" height="34.333333333333343"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="gray" title="Заказать услугу"/>
+                                                                <connections>
+                                                                    <action selector="searchSitterAction:" destination="hMp-o2-xFZ" eventType="touchUpInside" id="SFc-eN-7nj"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -365,12 +370,13 @@
                         <outlet property="countReviewsLbl" destination="Cqv-oO-reE" id="d7f-a5-fl2"/>
                         <outlet property="detailsStackView" destination="AOS-Xz-u9O" id="SDa-Rd-FGI"/>
                         <outlet property="nameSurnameLbl" destination="MyV-6T-CNA" id="T5q-7V-vs5"/>
+                        <outlet property="openCommentsBtn" destination="O6H-Tf-fhg" id="TLy-Rb-ggt"/>
                         <outlet property="petSizeLbl" destination="5OH-Ap-8oY" id="g9m-xL-T2I"/>
                         <outlet property="petTypeLbl" destination="BsF-Ts-0tk" id="6Ss-RY-G4U"/>
                         <outlet property="priceDogwalkingLbl" destination="DVG-Nv-ENF" id="2yq-Xq-YZ4"/>
                         <outlet property="pricePetsittingLbl" destination="seJ-gp-dK8" id="r8I-Nf-3mR"/>
                         <outlet property="progressStackView" destination="TGU-OL-euD" id="yPJ-BC-48d"/>
-                        <outlet property="ratingLbl" destination="B6A-h9-dYs" id="W8m-dU-fTP"/>
+                        <outlet property="searchSitterBtn" destination="yAX-lc-VtH" id="ltn-pC-T9Q"/>
                         <outlet property="starsLbl" destination="jTA-ig-dBr" id="pVY-0w-1VK"/>
                     </connections>
                 </viewController>
@@ -381,7 +387,7 @@
         <!--CommentsTVC-->
         <scene sceneID="ARE-fd-h1M">
             <objects>
-                <tableViewController id="F1H-W3-qfj" customClass="CommentsTVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CommentsTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F1H-W3-qfj" customClass="CommentsTVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="6sp-mi-62i">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,15 +1,13 @@
 //
-//  ServiceVC.swift
+//  SitterProfileVC.swift
 //  AnimalCare
 //
-//  Created by Sofa on 28.11.23.
+//  Created by Sofa on 13.01.24.
 //
 
 import UIKit
 
-class ServiceVC: UIViewController {
-    
-    var user: User!
+class SitterProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

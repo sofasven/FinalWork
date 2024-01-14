@@ -20,11 +20,11 @@ struct User {
     let city: String
     let address: String
     let sex: String
-    let avatar: UIImage?
+    var avatar: UIImage?
     let progress: Progress?
     let infoAboutYourself: String?
     let detailsOfWalking: Details?
-    let reviews: [Review]?
+    var reviews: [Review]?
     
     func convertToDictionary() -> [String: Any] {
         [Constants.uidKey: uid,
@@ -101,6 +101,6 @@ enum PetType: String {
 }
 
 struct Review {
-    let comment: String?
-    let rating: Int?
+    let comment: String
+    let mark: Double
 }

@@ -54,6 +54,12 @@
 		C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */; };
 		C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072F2B4CB94F00B941CE /* RoundRating.swift */; };
 		C7CDCE2B2B31D72500EEB1B4 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */; };
+		C7E272B62B5415B800EB0FF0 /* ProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */; };
+		C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */; };
+		C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB72B532296005DF43C /* SitterProfileVC.swift */; };
+		C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB92B532332005DF43C /* FeedbackVC.swift */; };
+		C7E62ABC2B5323D7005DF43C /* SittersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62ABB2B5323D7005DF43C /* SittersData.swift */; };
+		C7E62ABE2B532E84005DF43C /* GetImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62ABD2B532E84005DF43C /* GetImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +85,12 @@
 		C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
 		C7A6072F2B4CB94F00B941CE /* RoundRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRating.swift; sourceTree = "<group>"; };
 		C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCExt.swift; sourceTree = "<group>"; };
+		C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfSittersTVC.swift; sourceTree = "<group>"; };
+		C7E62AB72B532296005DF43C /* SitterProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitterProfileVC.swift; sourceTree = "<group>"; };
+		C7E62AB92B532332005DF43C /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
+		C7E62ABB2B5323D7005DF43C /* SittersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SittersData.swift; sourceTree = "<group>"; };
+		C7E62ABD2B532E84005DF43C /* GetImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +201,9 @@
 			children = (
 				C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */,
 				C721FBAE2B15493700893ADF /* ServiceVC.swift */,
+				C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */,
+				C7E62AB72B532296005DF43C /* SitterProfileVC.swift */,
+				C7E62AB92B532332005DF43C /* FeedbackVC.swift */,
 			);
 			path = AnimalService;
 			sourceTree = "<group>";
@@ -206,6 +221,7 @@
 			children = (
 				C78384182B1F103300638FCC /* RegistrationVCExt.swift */,
 				C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */,
+				C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +231,8 @@
 			children = (
 				C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */,
 				C7A6072F2B4CB94F00B941CE /* RoundRating.swift */,
+				C7E62ABB2B5323D7005DF43C /* SittersData.swift */,
+				C7E62ABD2B532E84005DF43C /* GetImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -326,9 +344,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C721FBAA2B15488100893ADF /* ProfileVC.swift in Sources */,
+				C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */,
 				C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */,
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
+				C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */,
 				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
+				C7E62ABE2B532E84005DF43C /* GetImageService.swift in Sources */,
+				C7E62ABC2B5323D7005DF43C /* SittersData.swift in Sources */,
+				C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */,
 				C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */,
 				C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */,
 				C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */,
@@ -336,6 +359,7 @@
 				C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */,
 				C721FBA32B1545F500893ADF /* MainVC.swift in Sources */,
 				C7CDCE2B2B31D72500EEB1B4 /* VerificationService.swift in Sources */,
+				C7E272B62B5415B800EB0FF0 /* ProfileVCExt.swift in Sources */,
 				C721FB542B153B7800893ADF /* SceneDelegate.swift in Sources */,
 				C721FBB22B154B6600893ADF /* User.swift in Sources */,
 				C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */,

@@ -77,6 +77,9 @@ class EditProfileVC: UIViewController {
             } else if let user = user {
                 let user = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumberInt, age: ageInt, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
                 self?.currentUser = user
+                if user.role == Role.dogwalker.rawValue {
+                    SittersData.shared.sitters.append(user)
+                }
                 let userRef = self?.ref.child(user.uid)
                 userRef?.setValue(user.convertToDictionary())
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
