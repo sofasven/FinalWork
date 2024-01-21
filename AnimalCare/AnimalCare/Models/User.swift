@@ -15,8 +15,8 @@ struct User {
     let role: String
     let name: String
     let surname: String
-    let phoneNumber: Int
-    let age: Int
+    let phoneNumber: String
+    let age: String
     let city: String
     let address: String
     let sex: String

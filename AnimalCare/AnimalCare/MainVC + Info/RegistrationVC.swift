@@ -39,6 +39,7 @@ class RegistrationVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
         emailTF.delegate = self
         passTF.delegate = self
+        confPassTF.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -194,7 +194,7 @@
         <!--MainVC-->
         <scene sceneID="VUd-hq-Uh3">
             <objects>
-                <viewController id="69A-MP-vVI" customClass="MainVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="69A-MP-vVI" customClass="MainVC" customModule="AnimalCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u7V-7y-fbq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

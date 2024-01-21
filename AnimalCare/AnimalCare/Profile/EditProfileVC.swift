@@ -53,6 +53,22 @@ class EditProfileVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         ref = Database.database().reference(withPath: "users")
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        nameTF.delegate = self
+        surnameTF.delegate = self
+        phoneNumberTF.delegate = self
+        ageTF.delegate = self
+        cityTF.delegate = self
+        adressTF.delegate = self
+        priceOfDogwalkingTF.delegate = self
+        priceOfSittingTF.delegate = self
+        aboutYourselfTW.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -63,25 +79,26 @@ class EditProfileVC: UIViewController {
               let name = nameTF.text,
               let surname = surnameTF.text,
               let phoneNumber = phoneNumberTF.text,
-              let phoneNumberInt = Int(phoneNumber),
               let age = ageTF.text,
-              let ageInt = Int(age),
               let city = cityTF.text,
-              let adress = adressTF.text else { return }
+              let adress = adressTF.text else {
+            errorLbl.isHidden = false
+            return
+        }
         let sex = sexSegmentedControl.selectedSegmentIndex == 0 ? "Женский" : "Мужской"
-        let infoAboutYourself = aboutYourselfTW.text.isEmpty ? "" : aboutYourselfTW.text
+        let infoAboutYourself = aboutYourselfTW.text
         // create new user
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
             if let _ = error {
                 self?.errorLbl.isHidden = false
             } else if let user = user {
-                let user = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumberInt, age: ageInt, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
-                self?.currentUser = user
-                if user.role == Role.dogwalker.rawValue {
-                    SittersData.shared.sitters.append(user)
+                let someUser = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumber, age: age, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
+                self?.currentUser = someUser
+                if someUser.role == Role.dogwalker.rawValue {
+                    SittersData.shared.sitters.append(someUser)
                 }
-                let userRef = self?.ref.child(user.uid)
-                userRef?.setValue(user.convertToDictionary())
+                let userRef = self?.ref.child(someUser.uid)
+                userRef?.setValue(someUser.convertToDictionary())
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                     if let _ = error {
                         self?.errorLbl.isHidden = false
@@ -157,13 +174,16 @@ class EditProfileVC: UIViewController {
     }
     
     
-        /*
-        // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destination.
-            // Pass the selected object to the new view controller.
+    @objc
+    private func kbWillShow(notification: Notification){
+        view.frame.origin.y = 0
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y -= keyboardSize.height / 2
         }
-        */
+    }
+    
+    @objc
+    private func kbWillHide(){
+        view.frame.origin.y = 0
+   }
 }

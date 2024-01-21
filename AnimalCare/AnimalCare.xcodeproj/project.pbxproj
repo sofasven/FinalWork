@@ -53,6 +53,7 @@
 		C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78384182B1F103300638FCC /* RegistrationVCExt.swift */; };
 		C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */; };
 		C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072F2B4CB94F00B941CE /* RoundRating.swift */; };
+		C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */; };
 		C7CDCE2B2B31D72500EEB1B4 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */; };
 		C7E272B62B5415B800EB0FF0 /* ProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */; };
 		C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */; };
@@ -84,6 +85,7 @@
 		C78384182B1F103300638FCC /* RegistrationVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVCExt.swift; sourceTree = "<group>"; };
 		C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
 		C7A6072F2B4CB94F00B941CE /* RoundRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRating.swift; sourceTree = "<group>"; };
+		C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVCExt.swift; sourceTree = "<group>"; };
 		C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCExt.swift; sourceTree = "<group>"; };
 		C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfSittersTVC.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				C78384182B1F103300638FCC /* RegistrationVCExt.swift */,
 				C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */,
 				C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */,
+				C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				C721FB542B153B7800893ADF /* SceneDelegate.swift in Sources */,
 				C721FBB22B154B6600893ADF /* User.swift in Sources */,
 				C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */,
+				C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
