@@ -59,11 +59,13 @@ struct User {
               let city = snapshotValue[Constants.cityKey] as? String,
               let address = snapshotValue[Constants.addressKey] as? String,
               let sex = snapshotValue[Constants.sexKey] as? String,
-              let avatar = snapshotValue[Constants.avatarKey] as? UIImage,
-              let progress = snapshotValue[Constants.progressKey] as? Progress,
-              let infoAboutYourself = snapshotValue[Constants.infoAboutYourselfKey] as? String,
-              let detailsOfWalking = snapshotValue[Constants.detailsOfWalkingKey] as? Details,
-              let reviews = snapshotValue[Constants.reviewsKey] as? [Review] else { return nil }
+              let avatar = snapshotValue[Constants.avatarKey] as? UIImage?,
+              let progress = snapshotValue[Constants.progressKey] as? Progress?,
+              let infoAboutYourself = snapshotValue[Constants.infoAboutYourselfKey] as? String?,
+              let detailsOfWalking = snapshotValue[Constants.detailsOfWalkingKey] as? Details?,
+              let reviews = snapshotValue[Constants.reviewsKey] as? [Review]? else {
+            print("Can't convert to User")
+            return nil }
         self.uid = uid
         self.email = email
         self.role = role
