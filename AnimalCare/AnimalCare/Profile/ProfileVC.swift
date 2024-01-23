@@ -8,10 +8,12 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 class ProfileVC: UIViewController {
     
-    var user: User!
+    var user: User?
+    var ref: DatabaseReference!
     
     //@IBOutlets
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -40,7 +42,21 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        guard let currentUser = Auth.auth().currentUser else { return }
+        ref = Database.database().reference(withPath: "users").child(currentUser.uid)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // наблюдатель за значениями
+        ref.observe(.value) { [weak self] snapshot in
+            print(snapshot)
+            guard let user = User(snapshot: snapshot) else {
+                print("Can't create user")
+                return }
+            self?.user = user
+            self?.setupUI()
+        }
     }
     
     @IBAction func changePhoto(_ sender: UIButton) {
@@ -100,8 +116,8 @@ class ProfileVC: UIViewController {
         aboutYourselfLbl.text = user.infoAboutYourself
         pricePetsittingLbl.text = user.detailsOfWalking?.priceOfSitting
         priceDogwalkingLbl.text = user.detailsOfWalking?.priceOfWalk
-        petTypeLbl.text = "\(user.detailsOfWalking?.petType ?? .cat )"
-        petSizeLbl.text = "\(user.detailsOfWalking?.petSize ?? [.small])"
+        petTypeLbl.text = "\(user.detailsOfWalking?.petType ?? PetType.cat.rawValue )"
+        petSizeLbl.text = "\(user.detailsOfWalking?.petSize ?? [PetSize.small.rawValue])"
         countReviewsLbl.text = "Средняя оценка на основании \(user.reviews?.count ?? 0) голосов"
     }
     

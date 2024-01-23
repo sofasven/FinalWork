@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
 
 struct User {
     let uid: String
@@ -25,6 +26,61 @@ struct User {
     let infoAboutYourself: String?
     let detailsOfWalking: Details?
     var reviews: [Review]?
+    let ref: DatabaseReference!
+    
+    init(uid: String, email: String, role: String, name: String, surname: String, phoneNumber: String, age: String, city: String, address: String, sex: String, avatar: UIImage?, progress: Progress?, infoAboutYourself: String?, detailsOfWalking: Details?, reviews: [Review]?) {
+        self.uid = uid
+        self.email = email
+        self.role = role
+        self.name = name
+        self.surname = surname
+        self.phoneNumber = phoneNumber
+        self.age = age
+        self.city = city
+        self.address = address
+        self.sex = sex
+        self.avatar = avatar
+        self.progress = progress
+        self.infoAboutYourself = infoAboutYourself
+        self.detailsOfWalking = detailsOfWalking
+        self.reviews = reviews
+        self.ref = nil
+    }
+    
+    init?(snapshot: DataSnapshot) { // DataSnapshot - снимок иерархии DB
+        guard let snapshotValue = snapshot.value as? [String: Any],
+              let uid = snapshotValue[Constants.uidKey] as? String,
+              let email = snapshotValue[Constants.emailKey] as? String,
+              let role = snapshotValue[Constants.roleKey] as? String,
+              let name = snapshotValue[Constants.nameKey] as? String,
+              let surname = snapshotValue[Constants.surnameKey] as? String,
+              let phoneNumber = snapshotValue[Constants.phoneNumberKey] as? String,
+              let age = snapshotValue[Constants.ageKey] as? String,
+              let city = snapshotValue[Constants.cityKey] as? String,
+              let address = snapshotValue[Constants.addressKey] as? String,
+              let sex = snapshotValue[Constants.sexKey] as? String,
+              let avatar = snapshotValue[Constants.avatarKey] as? UIImage,
+              let progress = snapshotValue[Constants.progressKey] as? Progress,
+              let infoAboutYourself = snapshotValue[Constants.infoAboutYourselfKey] as? String,
+              let detailsOfWalking = snapshotValue[Constants.detailsOfWalkingKey] as? Details,
+              let reviews = snapshotValue[Constants.reviewsKey] as? [Review] else { return nil }
+        self.uid = uid
+        self.email = email
+        self.role = role
+        self.name = name
+        self.surname = surname
+        self.phoneNumber = phoneNumber
+        self.age = age
+        self.city = city
+        self.address = address
+        self.sex = sex
+        self.avatar = avatar
+        self.progress = progress
+        self.infoAboutYourself = infoAboutYourself
+        self.detailsOfWalking = detailsOfWalking
+        self.reviews = reviews
+        self.ref = snapshot.ref
+    }
     
     func convertToDictionary() -> [String: Any] {
         [Constants.uidKey: uid,
@@ -74,9 +130,9 @@ struct Progress {
 }
 
 struct Details {
-    let typeOfService: TypesOfService?
-    let petType: PetType?
-    let petSize: [PetSize?]
+    let typeOfService: String?
+    let petType: String?
+    let petSize: [String]?
     let priceOfWalk: String?
     let priceOfSitting: String?
 }

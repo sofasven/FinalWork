@@ -16,7 +16,6 @@ class EditProfileVC: UIViewController {
     var email: String?
     var password: String?
     var role: String?
-    var currentUser: User?
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var surnameTF: UITextField!
@@ -93,7 +92,6 @@ class EditProfileVC: UIViewController {
                 self?.errorLbl.isHidden = false
             } else if let user = user {
                 let someUser = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumber, age: age, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
-                self?.currentUser = someUser
                 if someUser.role == Role.dogwalker.rawValue {
                     SittersData.shared.sitters.append(someUser)
                 }
@@ -102,10 +100,15 @@ class EditProfileVC: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                     if let _ = error {
                         self?.errorLbl.isHidden = false
-                    } else if let _ = user {
-                        guard let profileVC = UIViewController(nibName: "ProfileVC", bundle: nil) as? ProfileVC else { return }
-                        profileVC.user = self?.currentUser
-                        self?.navigationController?.popToViewController(profileVC, animated: true)
+                    } else if let user = user {
+                        print(user.user)
+                        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+                        guard let profileVC = stor.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
+                        else {
+                            print("Failed to create ProfileVC")
+                            return
+                        }
+                        self?.navigationController?.pushViewController(profileVC, animated: true)
                     }
                 }
             }
@@ -126,25 +129,28 @@ class EditProfileVC: UIViewController {
         return details
     }
     
-    private func choosePetSize() -> [PetSize?] {
-        let petSize: [PetSize?]
-        let small: PetSize? = smallPetSwitch.isOn ? .small : nil
-        let medium: PetSize? = mediumPetSwitch.isOn ? .medium : nil
-        let big: PetSize? = bigPetSwitch.isOn ? .big : nil
-        let veryBig: PetSize? = veryBigPetSwitch.isOn ? .veryBig : nil
-        petSize = [small, medium, big, veryBig]
+    private func choosePetSize() -> [String]? {
+        var petSize: [String] = []
+        let small = smallPetSwitch.isOn ? PetSize.small.rawValue : ""
+        let medium = mediumPetSwitch.isOn ? PetSize.medium.rawValue : ""
+        let big = bigPetSwitch.isOn ? PetSize.big.rawValue : ""
+        let veryBig = veryBigPetSwitch.isOn ? PetSize.veryBig.rawValue : ""
+        petSize.append(small)
+        petSize.append(medium)
+        petSize.append(big)
+        petSize.append(veryBig)
         return petSize
     }
     
-    private func choosePetType() -> PetType? {
-        let petType: PetType?
+    private func choosePetType() -> String? {
+        let petType: String?
         if dogSwitch.isOn,
            catSwitch.isOn {
-            petType = .both
+            petType = PetType.both.rawValue
         } else if dogSwitch.isOn {
-            petType = .dog
+            petType = PetType.dog.rawValue
         } else if catSwitch.isOn {
-            petType = .cat
+            petType = PetType.cat.rawValue
         } else {
             errorLbl.isHidden = false
             petType = nil
@@ -152,15 +158,15 @@ class EditProfileVC: UIViewController {
         return petType
     }
     
-    private func chooseTypeOfService() -> TypesOfService? {
-        let typeOfService: TypesOfService?
+    private func chooseTypeOfService() -> String? {
+        let typeOfService: String?
         if sitterSwitch.isOn,
            dogwalkerSwitch.isOn {
-            typeOfService = .both
+            typeOfService = TypesOfService.both.rawValue
         } else if sitterSwitch.isOn {
-            typeOfService = .dogsitter
+            typeOfService = TypesOfService.dogsitter.rawValue
         } else if dogwalkerSwitch.isOn {
-            typeOfService = .dogwalker
+            typeOfService = TypesOfService.dogwalker.rawValue
         } else {
             errorLbl.isHidden = false
             typeOfService = nil
