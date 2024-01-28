@@ -9,14 +9,19 @@ import UIKit
 
 class Calculating {
 
-   static func roundRating(user: User) -> String {
+   static func roundRating(reviews: [Review]?) -> String? {
         var sum = 0.0
         var rating = 0.0
-       guard let reviews = user.reviews else { return ""}
-        for review in reviews {
-            sum += review.mark
+       var marks: [Double] = []
+       guard let reviews else { return nil }
+       for review in reviews {
+           let reviewsMark = review.mark
+           marks.append(reviewsMark)
+       }
+       for mark in marks {
+            sum += mark
         }
-        rating = sum / Double(reviews.count)
+        rating = sum / Double(marks.count)
         switch rating {
         case 1...1.4:
             return "⭐️"

@@ -91,10 +91,7 @@ class EditProfileVC: UIViewController {
             if let _ = error {
                 self?.errorLbl.isHidden = false
             } else if let user = user {
-                let someUser = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumber, age: age, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
-                if someUser.role == Role.dogwalker.rawValue {
-                    SittersData.shared.sitters.append(someUser)
-                }
+                let someUser = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumber, age: age, city: city, address: adress, sex: sex, avatar: nil, progressOfWalking: nil, progressOfSitting: nil, infoAboutYourself: infoAboutYourself, typeOfService: self?.chooseTypeOfService(), petType: self?.choosePetType(), petSize: self?.choosePetSize(), priceOfWalk: self?.choosePriceOfWalk(), priceOfSitting: self?.choosePriceOfSitting())
                 let userRef = self?.ref.child(someUser.uid)
                 userRef?.setValue(someUser.convertToDictionary())
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
@@ -117,28 +114,30 @@ class EditProfileVC: UIViewController {
     
     
     
-    private func chooseDetails() -> Details? {
-        let details: Details?
-        let priceOfWalk: String? = dogwalkerSwitch.isOn ? priceOfDogwalkingTF.text : nil
+    private func choosePriceOfSitting() -> String? {
         let priceOfSitting: String? = sitterSwitch.isOn ? priceOfSittingTF.text : nil
-        if role == Role.dogwalker.rawValue {
-            details = Details(typeOfService: chooseTypeOfService(), petType: choosePetType(), petSize: choosePetSize(), priceOfWalk: priceOfWalk, priceOfSitting: priceOfSitting)
-        } else {
-            details = nil
-        }
-        return details
+        return priceOfSitting
+    }
+    private func choosePriceOfWalk() -> String? {
+            let priceOfWalk: String? = dogwalkerSwitch.isOn ? priceOfDogwalkingTF.text : nil
+        return priceOfWalk
     }
     
     private func choosePetSize() -> [String]? {
         var petSize: [String] = []
-        let small = smallPetSwitch.isOn ? PetSize.small.rawValue : ""
-        let medium = mediumPetSwitch.isOn ? PetSize.medium.rawValue : ""
-        let big = bigPetSwitch.isOn ? PetSize.big.rawValue : ""
-        let veryBig = veryBigPetSwitch.isOn ? PetSize.veryBig.rawValue : ""
-        petSize.append(small)
-        petSize.append(medium)
-        petSize.append(big)
-        petSize.append(veryBig)
+        if smallPetSwitch.isOn {
+            petSize.append(PetSize.small.rawValue)
+        }
+        if mediumPetSwitch.isOn {
+            petSize.append(PetSize.medium.rawValue)
+        }
+        if bigPetSwitch.isOn {
+            petSize.append(PetSize.big.rawValue)
+        }
+        if veryBigPetSwitch.isOn {
+            petSize.append(PetSize.veryBig.rawValue)
+        }
+        guard !petSize.isEmpty else { return nil }
         return petSize
     }
     

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedbackVC: UIViewController {
     
-    var index: Int?
+    var userUid: String?
+    var clientName: String?
+    var ref: DatabaseReference!
     
     @IBOutlet weak var textReview: UITextView!
     @IBOutlet weak var errorLbl: UILabel!
@@ -19,6 +22,7 @@ class FeedbackVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        ref = Database.database().reference(withPath: "users").child(userUid ?? "").child("reviews")
     }
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
@@ -26,9 +30,13 @@ class FeedbackVC: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
-        guard let indexPath = index else { return }
-        let review = Review(comment: textReview.text, mark: Double(mark.selectedSegmentIndex + 1))
-        SittersData.shared.sitters[indexPath].reviews?.append(review)
+        guard let userUid,
+              let clientName else { return }
+        let reviewsMark = Double(mark.selectedSegmentIndex + 1)
+        let reviewsComment = textReview.text
+        let review = Review(userUid: userUid, comment: reviewsComment, mark: reviewsMark, clientName: clientName)
+        let reviewRef = self.ref.child(review.userUid)
+        reviewRef.setValue(review.convertToDictionary())
         navigationController?.popViewController(animated: true)
     }
     

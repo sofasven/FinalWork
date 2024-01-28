@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C714A10C2B61A66400633467 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C714A10B2B61A66400633467 /* Review.swift */; };
 		C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FB512B153B7800893ADF /* AppDelegate.swift */; };
 		C721FB542B153B7800893ADF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FB532B153B7800893ADF /* SceneDelegate.swift */; };
 		C721FB592B153B7800893ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C721FB572B153B7800893ADF /* Main.storyboard */; };
@@ -47,6 +48,9 @@
 		C721FBAD2B1548E400893ADF /* ServiceStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */; };
 		C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBAE2B15493700893ADF /* ServiceVC.swift */; };
 		C721FBB22B154B6600893ADF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721FBB12B154B6600893ADF /* User.swift */; };
+		C734689C2B6551A2003A3D0B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C734689B2B6551A2003A3D0B /* DataManager.swift */; };
+		C734689E2B6556D1003A3D0B /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C734689D2B6556D1003A3D0B /* Reservation.swift */; };
+		C73468A12B657261003A3D0B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C73468A02B657261003A3D0B /* FSCalendar */; };
 		C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */; };
 		C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */; };
 		C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F43522B17F9F100C893BB /* RegistrationVC.swift */; };
@@ -54,16 +58,17 @@
 		C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */; };
 		C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072F2B4CB94F00B941CE /* RoundRating.swift */; };
 		C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */; };
+		C7C380C12B65A11100BF9E01 /* ListOfSittersTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C380BF2B65A11100BF9E01 /* ListOfSittersTVCell.swift */; };
+		C7C380C22B65A11100BF9E01 /* ListOfSittersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C380C02B65A11100BF9E01 /* ListOfSittersTVCell.xib */; };
 		C7CDCE2B2B31D72500EEB1B4 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */; };
 		C7E272B62B5415B800EB0FF0 /* ProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */; };
 		C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */; };
 		C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB72B532296005DF43C /* SitterProfileVC.swift */; };
 		C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB92B532332005DF43C /* FeedbackVC.swift */; };
-		C7E62ABC2B5323D7005DF43C /* SittersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62ABB2B5323D7005DF43C /* SittersData.swift */; };
-		C7E62ABE2B532E84005DF43C /* GetImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62ABD2B532E84005DF43C /* GetImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C714A10B2B61A66400633467 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		C721FB4E2B153B7800893ADF /* AnimalCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C721FB512B153B7800893ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C721FB532B153B7800893ADF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +84,8 @@
 		C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceStoryboard.storyboard; sourceTree = "<group>"; };
 		C721FBAE2B15493700893ADF /* ServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceVC.swift; sourceTree = "<group>"; };
 		C721FBB12B154B6600893ADF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C734689B2B6551A2003A3D0B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C734689D2B6556D1003A3D0B /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExt.swift; sourceTree = "<group>"; };
 		C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		C73F43522B17F9F100C893BB /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
@@ -86,13 +93,13 @@
 		C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
 		C7A6072F2B4CB94F00B941CE /* RoundRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRating.swift; sourceTree = "<group>"; };
 		C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVCExt.swift; sourceTree = "<group>"; };
+		C7C380BF2B65A11100BF9E01 /* ListOfSittersTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfSittersTVCell.swift; sourceTree = "<group>"; };
+		C7C380C02B65A11100BF9E01 /* ListOfSittersTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfSittersTVCell.xib; sourceTree = "<group>"; };
 		C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCExt.swift; sourceTree = "<group>"; };
 		C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfSittersTVC.swift; sourceTree = "<group>"; };
 		C7E62AB72B532296005DF43C /* SitterProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitterProfileVC.swift; sourceTree = "<group>"; };
 		C7E62AB92B532332005DF43C /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
-		C7E62ABB2B5323D7005DF43C /* SittersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SittersData.swift; sourceTree = "<group>"; };
-		C7E62ABD2B532E84005DF43C /* GetImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,7 @@
 				C721FB812B153EC300893ADF /* FirebaseFirestore in Frameworks */,
 				C721FB6D2B153EC300893ADF /* FirebaseAnalyticsSwift in Frameworks */,
 				C721FB692B153EC300893ADF /* FirebaseAnalytics in Frameworks */,
+				C73468A12B657261003A3D0B /* FSCalendar in Frameworks */,
 				C721FB6B2B153EC300893ADF /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				C721FB912B153EC300893ADF /* FirebaseMLModelDownloader in Frameworks */,
 				C721FB852B153EC300893ADF /* FirebaseFirestoreSwift in Frameworks */,
@@ -201,6 +209,7 @@
 		C721FBAB2B1548BC00893ADF /* AnimalService */ = {
 			isa = PBXGroup;
 			children = (
+				C7C380BE2B65A0D200BF9E01 /* Cell */,
 				C721FBAC2B1548E400893ADF /* ServiceStoryboard.storyboard */,
 				C721FBAE2B15493700893ADF /* ServiceVC.swift */,
 				C7E62AB52B53225C005DF43C /* ListOfSittersTVC.swift */,
@@ -214,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				C721FBB12B154B6600893ADF /* User.swift */,
+				C714A10B2B61A66400633467 /* Review.swift */,
+				C734689D2B6556D1003A3D0B /* Reservation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,13 +240,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C7C380BE2B65A0D200BF9E01 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C7C380BF2B65A11100BF9E01 /* ListOfSittersTVCell.swift */,
+				C7C380C02B65A11100BF9E01 /* ListOfSittersTVCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C7CDCE292B31D70A00EEB1B4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C7CDCE2A2B31D72500EEB1B4 /* VerificationService.swift */,
 				C7A6072F2B4CB94F00B941CE /* RoundRating.swift */,
-				C7E62ABB2B5323D7005DF43C /* SittersData.swift */,
-				C7E62ABD2B532E84005DF43C /* GetImageService.swift */,
+				C734689B2B6551A2003A3D0B /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -284,6 +303,7 @@
 				C721FB982B153EC300893ADF /* FirebaseRemoteConfigSwift */,
 				C721FB9A2B153EC300893ADF /* FirebaseStorage */,
 				C721FB9C2B153EC300893ADF /* FirebaseStorageCombine-Community */,
+				C73468A02B657261003A3D0B /* FSCalendar */,
 			);
 			productName = AnimalCare;
 			productReference = C721FB4E2B153B7800893ADF /* AnimalCare.app */;
@@ -315,6 +335,7 @@
 			mainGroup = C721FB452B153B7700893ADF;
 			packageReferences = (
 				C721FB672B153EC300893ADF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C734689F2B657261003A3D0B /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = C721FB4F2B153B7800893ADF /* Products */;
 			projectDirPath = "";
@@ -330,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C380C22B65A11100BF9E01 /* ListOfSittersTVCell.xib in Resources */,
 				C721FB5E2B153B7A00893ADF /* LaunchScreen.storyboard in Resources */,
 				C721FB9F2B1540D200893ADF /* GoogleService-Info.plist in Resources */,
 				C721FB5B2B153B7A00893ADF /* Assets.xcassets in Resources */,
@@ -348,22 +370,24 @@
 			files = (
 				C721FBAA2B15488100893ADF /* ProfileVC.swift in Sources */,
 				C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */,
+				C714A10C2B61A66400633467 /* Review.swift in Sources */,
 				C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */,
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
 				C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */,
 				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
-				C7E62ABE2B532E84005DF43C /* GetImageService.swift in Sources */,
-				C7E62ABC2B5323D7005DF43C /* SittersData.swift in Sources */,
 				C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */,
 				C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */,
 				C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */,
+				C734689C2B6551A2003A3D0B /* DataManager.swift in Sources */,
 				C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */,
 				C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */,
 				C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */,
+				C734689E2B6556D1003A3D0B /* Reservation.swift in Sources */,
 				C721FBA32B1545F500893ADF /* MainVC.swift in Sources */,
 				C7CDCE2B2B31D72500EEB1B4 /* VerificationService.swift in Sources */,
 				C7E272B62B5415B800EB0FF0 /* ProfileVCExt.swift in Sources */,
 				C721FB542B153B7800893ADF /* SceneDelegate.swift in Sources */,
+				C7C380C12B65A11100BF9E01 /* ListOfSittersTVCell.swift in Sources */,
 				C721FBB22B154B6600893ADF /* User.swift in Sources */,
 				C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */,
 				C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */,
@@ -594,6 +618,14 @@
 				minimumVersion = 10.17.0;
 			};
 		};
+		C734689F2B657261003A3D0B /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -731,6 +763,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C721FB672B153EC300893ADF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		C73468A02B657261003A3D0B /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C734689F2B657261003A3D0B /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

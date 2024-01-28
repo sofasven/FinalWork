@@ -14,6 +14,10 @@ class ProfileVC: UIViewController {
     
     var user: User?
     var ref: DatabaseReference!
+    var imageRef: StorageReference!
+    var reviews: [Review]?
+    let dataManager = DataManager()
+    var reservations: [Reservation]?
     
     //@IBOutlets
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -25,9 +29,11 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var aboutYourselfLbl: UILabel!
     @IBOutlet weak var openCommentsBtn: UIButton!
     @IBOutlet weak var searchSitterBtn: UIButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var reservationsBtn: UIButton!
     
     //progress
-    @IBOutlet weak var countPetsitting: UILabel!
     @IBOutlet weak var countDogwalking: UILabel!
     
     //details
@@ -40,10 +46,17 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var progressStackView: UIStackView!
     @IBOutlet weak var detailsStackView: UIStackView!
     
+    @IBOutlet weak var commonStackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let currentUser = Auth.auth().currentUser else { return }
         ref = Database.database().reference(withPath: "users").child(currentUser.uid)
+        
+        let storageRef = Storage.storage().reference()
+        let imageKey = currentUser.uid
+        imageRef = storageRef.child(imageKey)
+        firstSetupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +92,10 @@ class ProfileVC: UIViewController {
     }
     
     
+    @IBAction func reservationsBtnAction() {
+    }
+    
+    
     @IBAction func deleteUserAction() {
         guard let user = Firebase.Auth.auth().currentUser else { return }
         user.delete { _ in 
@@ -91,7 +108,7 @@ class ProfileVC: UIViewController {
     @IBAction func searchSitterAction(_ sender: UIButton) {
         let stor = UIStoryboard(name: "ServiceStoryboard", bundle: nil)
         guard let serviceVC = stor.instantiateViewController(withIdentifier: "ServiceVC") as? ServiceVC else { return }
-        serviceVC.user = user
+        serviceVC.clientUser = user
         self.navigationController?.pushViewController(serviceVC, animated: true)
     }
     
@@ -104,21 +121,37 @@ class ProfileVC: UIViewController {
 
     private func setupUI() {
         guard let user = user else { return }
+        var petSize: String = ""
+        if let userPetSize = user.petSize {
+            for size in userPetSize {
+                petSize += "\n\(size)"
+            }
+        }
+        let reviews = dataManager.getReviews(userUid: user.uid)
         progressStackView.isHidden = user.role == Role.client.rawValue
         detailsStackView.isHidden = user.role == Role.client.rawValue
         openCommentsBtn.isHidden = user.role == Role.client.rawValue
         searchSitterBtn.isHidden = user.role == Role.dogwalker.rawValue
-        avatarImageView.image = user.avatar ?? #imageLiteral(resourceName: "default-picture_0_0.png")
+        avatarImageView.image = dataManager.getDataImage(imageRef: imageRef, avatar: avatarImageView, activityIV: activityIndicatorView) ?? #imageLiteral(resourceName: "default-picture_0_0.png")
         nameSurnameLbl.text = "\(user.name) \(user.surname)"
         ageLbl.text = "\(user.age)"
         cityLbl.text = user.city
-        starsLbl.text = Calculating.roundRating(user: user)
+        countDogwalking.text = "\(reservations?.count ?? 0) бронирований(-я)"
+        starsLbl.text = Calculating.roundRating(reviews: reviews)
         aboutYourselfLbl.text = user.infoAboutYourself
-        pricePetsittingLbl.text = user.detailsOfWalking?.priceOfSitting
-        priceDogwalkingLbl.text = user.detailsOfWalking?.priceOfWalk
-        petTypeLbl.text = "\(user.detailsOfWalking?.petType ?? PetType.cat.rawValue )"
-        petSizeLbl.text = "\(user.detailsOfWalking?.petSize ?? [PetSize.small.rawValue])"
-        countReviewsLbl.text = "Средняя оценка на основании \(user.reviews?.count ?? 0) голосов"
+        pricePetsittingLbl.text = user.priceOfSitting
+        priceDogwalkingLbl.text = user.priceOfWalk
+        petTypeLbl.text = user.petType
+        petSizeLbl.text = petSize
+        countReviewsLbl.text = "Средняя оценка на основании \(reviews?.count ?? 0) голосов"
+        commonStackView.isHidden = false
+    }
+    
+    private func firstSetupUI() {
+        commonStackView.isHidden = true
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        
     }
     
 }

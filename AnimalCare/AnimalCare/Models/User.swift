@@ -22,13 +22,18 @@ struct User {
     let address: String
     let sex: String
     var avatar: UIImage?
-    let progress: Progress?
+    // progress
+    let progressOfWalking: String?
+    let progressOfSitting: String?
     let infoAboutYourself: String?
-    let detailsOfWalking: Details?
-    var reviews: [Review]?
-    let ref: DatabaseReference!
+    //details
+    let typeOfService: String?
+    let petType: String?
+    let petSize: [String]?
+    let priceOfWalk: String?
+    let priceOfSitting: String?
     
-    init(uid: String, email: String, role: String, name: String, surname: String, phoneNumber: String, age: String, city: String, address: String, sex: String, avatar: UIImage?, progress: Progress?, infoAboutYourself: String?, detailsOfWalking: Details?, reviews: [Review]?) {
+    init(uid: String, email: String, role: String, name: String, surname: String, phoneNumber: String, age: String, city: String, address: String, sex: String, avatar: UIImage?, progressOfWalking: String?, progressOfSitting: String?,  infoAboutYourself: String?, typeOfService: String?, petType: String?, petSize: [String]?, priceOfWalk: String?, priceOfSitting: String?) {
         self.uid = uid
         self.email = email
         self.role = role
@@ -40,11 +45,14 @@ struct User {
         self.address = address
         self.sex = sex
         self.avatar = avatar
-        self.progress = progress
+        self.progressOfWalking = progressOfWalking
+        self.progressOfSitting = progressOfSitting
         self.infoAboutYourself = infoAboutYourself
-        self.detailsOfWalking = detailsOfWalking
-        self.reviews = reviews
-        self.ref = nil
+        self.typeOfService = typeOfService
+        self.petType = petType
+        self.petSize = petSize
+        self.priceOfWalk = priceOfWalk
+        self.priceOfSitting = priceOfSitting
     }
     
     init?(snapshot: DataSnapshot) { // DataSnapshot - снимок иерархии DB
@@ -60,10 +68,14 @@ struct User {
               let address = snapshotValue[Constants.addressKey] as? String,
               let sex = snapshotValue[Constants.sexKey] as? String,
               let avatar = snapshotValue[Constants.avatarKey] as? UIImage?,
-              let progress = snapshotValue[Constants.progressKey] as? Progress?,
+              let progressOfWalking = snapshotValue[Constants.progressOfWalkingKey] as? String?,
+              let progressOfSitting = snapshotValue[Constants.progressOfSittingKey] as? String?,
               let infoAboutYourself = snapshotValue[Constants.infoAboutYourselfKey] as? String?,
-              let detailsOfWalking = snapshotValue[Constants.detailsOfWalkingKey] as? Details?,
-              let reviews = snapshotValue[Constants.reviewsKey] as? [Review]? else {
+              let typeOfService = snapshotValue[Constants.typeOfServiceKey] as? String?,
+              let petType = snapshotValue[Constants.petTypeKey] as? String?,
+              let petSize = snapshotValue[Constants.petSizeKey] as? [String]?,
+              let priceOfWalk = snapshotValue[Constants.priceOfWalkKey] as? String?,
+              let priceOfSitting = snapshotValue[Constants.priceOfSittingKey] as? String? else {
             print("Can't convert to User")
             return nil }
         self.uid = uid
@@ -77,11 +89,14 @@ struct User {
         self.address = address
         self.sex = sex
         self.avatar = avatar
-        self.progress = progress
+        self.progressOfWalking = progressOfWalking
+        self.progressOfSitting = progressOfSitting
         self.infoAboutYourself = infoAboutYourself
-        self.detailsOfWalking = detailsOfWalking
-        self.reviews = reviews
-        self.ref = snapshot.ref
+        self.typeOfService = typeOfService
+        self.petType = petType
+        self.petSize = petSize
+        self.priceOfWalk = priceOfWalk
+        self.priceOfSitting = priceOfSitting
     }
     
     func convertToDictionary() -> [String: Any] {
@@ -96,10 +111,14 @@ struct User {
          Constants.addressKey: address,
          Constants.sexKey: sex,
          Constants.avatarKey: avatar,
-         Constants.progressKey: progress,
+         Constants.progressOfWalkingKey: progressOfWalking,
+         Constants.progressOfSittingKey: progressOfSitting,
          Constants.infoAboutYourselfKey: infoAboutYourself,
-         Constants.detailsOfWalkingKey: detailsOfWalking,
-         Constants.reviewsKey: reviews]
+         Constants.typeOfServiceKey: typeOfService,
+         Constants.petTypeKey: petType,
+         Constants.petSizeKey: petSize,
+         Constants.priceOfWalkKey: priceOfWalk,
+         Constants.priceOfSittingKey: priceOfSitting]
     }
 
     private enum Constants {
@@ -114,29 +133,20 @@ struct User {
         static let addressKey = "address"
         static let sexKey = "sex"
         static let avatarKey = "avatar"
-        static let progressKey = "progress"
+        static let progressOfWalkingKey = "progressOfWalking"
+        static let progressOfSittingKey = "progressOfSitting"
         static let infoAboutYourselfKey = "infoAboutYourself"
-        static let detailsOfWalkingKey = "detailsOfWalking"
-        static let reviewsKey = "reviews"
+        static let typeOfServiceKey = "typeOfService"
+        static let petTypeKey = "petType"
+        static let petSizeKey = "petSize"
+        static let priceOfWalkKey = "priceOfWalk"
+        static let priceOfSittingKey = "priceOfSitting"
     }
 }
 
 enum Role: String {
     case client = "Client"
     case dogwalker = "Dogwalker"
-}
-
-struct Progress {
-    let dogwalking: Int
-    let sitting: Int
-}
-
-struct Details {
-    let typeOfService: String?
-    let petType: String?
-    let petSize: [String]?
-    let priceOfWalk: String?
-    let priceOfSitting: String?
 }
 
 enum TypesOfService: String {
@@ -158,7 +168,3 @@ enum PetType: String {
     case both = "Собака и кот"
 }
 
-struct Review {
-    let comment: String
-    let mark: Double
-}

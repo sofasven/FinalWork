@@ -57,7 +57,7 @@ class MainVC: UIViewController {
             if let _ = error {
                 self?.errorLbl.isHidden = false
             } else if let _ = user {
-                self?.goToProfile()
+//                self?.goToProfile()
             }
         }
     }

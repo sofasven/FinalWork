@@ -12,6 +12,7 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             avatarImageView.image = image
             user?.avatar = image
+            dataManager.putDataImage(imageRef: imageRef, image: image)
         }
         picker.dismiss(animated: true)
     }
