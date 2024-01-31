@@ -11,17 +11,19 @@ import FirebaseStorage
 
 class DataManager {
     
-    func getReviews(userUid: String) -> [Review]? {
+    func getReviews(userUid: String, completion: @escaping (([Review]?) -> Void)) {
         let ref = Database.database().reference(withPath: "users").child(userUid).child("reviews")
         var reviews = [Review]()
         ref.observe(.value) { snapshot in
+            completion(reviews)
             for item in snapshot.children {
                 guard let snapshot = item as? DataSnapshot,
                       let review = Review(snapshot: snapshot) else { return }
                 reviews.append(review)
+                print("\(reviews)")
             }
+            completion(reviews)
         }
-        return reviews
     }
     
     func putDataImage(imageRef: StorageReference, image: UIImage) {
@@ -31,20 +33,17 @@ class DataManager {
         }
     }
     
-    func getDataImage(imageRef: StorageReference, avatar: UIImageView, activityIV: UIActivityIndicatorView) -> UIImage? {
+    func getDataImage(imageRef: StorageReference, completion: @escaping ((UIImage?) -> Void)) {
         var image: UIImage?
         let _ = imageRef.getData(maxSize: 999999999999999) { data, error in
             if let data = data {
                 print("\n data: \n\(data)\n")
                 image = UIImage(data: data) ?? nil
-                avatar.image = image
             } else {
                 print("\n error:\n\(String(describing: error))\n")
             }
-            activityIV.stopAnimating()
-            activityIV.isHidden = true
+            completion(image)
         }
-        return image
     }
     
     

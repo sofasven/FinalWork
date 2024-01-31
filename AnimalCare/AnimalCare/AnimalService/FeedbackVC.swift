@@ -22,7 +22,8 @@ class FeedbackVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        ref = Database.database().reference(withPath: "users").child(userUid ?? "").child("reviews")
+        guard let userUid else { return }
+        ref = Database.database().reference(withPath: "users").child(userUid).child("reviews")
     }
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
@@ -35,7 +36,7 @@ class FeedbackVC: UIViewController {
         let reviewsMark = Double(mark.selectedSegmentIndex + 1)
         let reviewsComment = textReview.text
         let review = Review(userUid: userUid, comment: reviewsComment, mark: reviewsMark, clientName: clientName)
-        let reviewRef = self.ref.child(review.userUid)
+        let reviewRef = self.ref.child(review.clientName)
         reviewRef.setValue(review.convertToDictionary())
         navigationController?.popViewController(animated: true)
     }

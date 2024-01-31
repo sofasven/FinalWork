@@ -18,7 +18,6 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     var ref: DatabaseReference!
     var sitters: [User] = []
     
-    @IBOutlet weak var adressTF: UITextField!
     @IBOutlet weak var petTypeSC: UISegmentedControl!
     @IBOutlet weak var typeOfServiceSC: UISegmentedControl!
     @IBOutlet weak var petSizeSC: UISegmentedControl!
@@ -53,6 +52,9 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let listOfSittersTVC = segue.destination as? ListOfSittersTVC else { return }
+        let petType = petTypeSC.selectedSegmentIndex == 0 ? PetType.dog.rawValue : PetType.cat.rawValue
+        let typeOfService = typeOfServiceSC.selectedSegmentIndex == 0 ? TypesOfService.dogsitter.rawValue : TypesOfService.dogwalker.rawValue
+        let petSize = choosePetSize()
         var users = [User]()
         ref.observe(.value) { [weak self] snapshot in
             for item in snapshot.children {
@@ -66,10 +68,8 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
                 print("\(users)")
             }
             for user in users {
-                let petType = self?.petTypeSC.selectedSegmentIndex == 0 ? PetType.dog.rawValue : PetType.cat.rawValue
-                let typeOfService = self?.typeOfServiceSC.selectedSegmentIndex == 0 ? TypesOfService.dogsitter.rawValue : TypesOfService.dogwalker.rawValue
                 if let userPetSize = user.petSize,
-                   let petSize = self?.choosePetSize(),
+                   let petSize,
                    user.petType == petType || user.petType == PetType.both.rawValue,
                    userPetSize.contains(petSize),
                    user.typeOfService == typeOfService || user.typeOfService == TypesOfService.both.rawValue {
@@ -80,7 +80,9 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
             listOfSittersTVC.sitters = self?.sitters ?? []
         }
         listOfSittersTVC.sitters = sitters
-        listOfSittersTVC.clientAdress = adressTF.text
+        listOfSittersTVC.typeOfService = typeOfService
+        listOfSittersTVC.petType = petType
+        listOfSittersTVC.petSize = petSize
         listOfSittersTVC.toDate = toDateBtn.currentTitle
         listOfSittersTVC.fromDate = fromDateBtn.currentTitle
         listOfSittersTVC.clientUser = clientUser
@@ -123,33 +125,4 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
         return petSize
     }
 
-
-    private func getSitters() {
-        var users = [User]()
-        ref.observe(.value) { snapshot in
-            for item in snapshot.children {
-                guard let snapshot = item as? DataSnapshot,
-                      let user = User(snapshot: snapshot)
-                else {
-                    print("Can't get user")
-                    return
-                }
-                users.append(user)
-                print("\(users)")
-            }
-        }
-        for user in users {
-            let petType = petTypeSC.selectedSegmentIndex == 0 ? PetType.dog.rawValue : PetType.cat.rawValue
-            let typeOfService = typeOfServiceSC.selectedSegmentIndex == 0 ? TypesOfService.dogsitter.rawValue : TypesOfService.dogwalker.rawValue
-            guard let userPetType = user.petType,
-                  let userPetSize = user.petSize,
-                  let userTypeOfService = user.typeOfService,
-                  let petSize = choosePetSize(),
-                  userPetType == petType,
-                  userPetSize.contains(petSize),
-                  userTypeOfService == typeOfService else { return }
-            self.sitters.append(user)
-            print("\(sitters)")
-        }
-    }
 }

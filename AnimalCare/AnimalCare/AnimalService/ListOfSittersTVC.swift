@@ -11,9 +11,11 @@ import FirebaseStorage
 
 class ListOfSittersTVC: UITableViewController {
     
-    var clientAdress: String?
     var fromDate: String?
     var toDate: String?
+    var petSize: String?
+    var petType: String?
+    var typeOfService: String?
     var clientUser: User!
     var imageRef: StorageReference!
     var sitters: [User] = [] { didSet { tableView.reloadData() }}
@@ -39,19 +41,34 @@ class ListOfSittersTVC: UITableViewController {
         let dataManager = DataManager()
         cell.activityIndicatorView.startAnimating()
         cell.activityIndicatorView.isHidden = false
-        let reviews = dataManager.getReviews(userUid: sitter.uid)
-        cell.avatarImageView.image = dataManager.getDataImage(imageRef: imageRef, avatar: cell.avatarImageView, activityIV: cell.activityIndicatorView)
+        dataManager.getReviews(userUid: sitter.uid) { reviews in
+            cell.ratingLbl.text = Calculating.roundRating(reviews: reviews)
+        }
+        dataManager.getDataImage(imageRef: imageRef) { image in
+            cell.avatarImageView.image = image ?? #imageLiteral(resourceName: "default-picture_0_0.png")
+            cell.activityIndicatorView.stopAnimating()
+            cell.activityIndicatorView.isHidden = true
+        }
         cell.nameLbl.text = sitter.name
-        cell.ratingLbl.text = Calculating.roundRating(reviews: reviews)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sitter = sitters[indexPath.row]
-        performSegue(withIdentifier: "goToSitterProfile", sender: nil)
-    }
-
+    // MARK: - Navigation
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let stor = UIStoryboard(name: "ServiceStoryboard", bundle: nil)
+        guard let sitterProfileVC = stor.instantiateViewController(withIdentifier: "SitterProfileVC") as? SitterProfileVC else { return }
+            let sitter = sitters[indexPath.row]
+        sitterProfileVC.sitter = sitter
+        sitterProfileVC.clientUser = clientUser
+        sitterProfileVC.fromDate = fromDate
+        sitterProfileVC.toDate = toDate
+        sitterProfileVC.petSize = petSize
+        sitterProfileVC.petType = petType
+        sitterProfileVC.typeOfService = typeOfService
+        navigationController?.pushViewController(sitterProfileVC, animated: true)
+        }
+
     deinit {
         print("ListOfSittersTVC deinit")
     }

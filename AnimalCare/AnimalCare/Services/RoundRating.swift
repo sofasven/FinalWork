@@ -37,4 +37,22 @@ class Calculating {
             return "Нет отзывов"
         }
     }
+    
+    static func getMark(mark: Double) -> String? {
+        switch mark {
+        case 1.0:
+            return "⭐️"
+        case 2.0:
+            return "⭐️⭐️"
+        case 3.0:
+            return "⭐️⭐️⭐️"
+        case 4.0:
+            return "⭐️⭐️⭐️⭐️"
+        case 5.0:
+            return "⭐️⭐️⭐️⭐️⭐️"
+        default:
+            return "Нет отзывов"
+        }
+    }
+    
 }
