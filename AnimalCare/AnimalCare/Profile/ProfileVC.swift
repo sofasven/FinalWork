@@ -87,30 +87,39 @@ class ProfileVC: UIViewController {
         } catch {
             print(error)
         }
-        let stor = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-        self.navigationController?.pushViewController(mainVC, animated: true)
+//        let stor = UIStoryboard(name: "Main", bundle: nil)
+//        guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
+//        self.navigationController?.pushViewController(mainVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
     @IBAction func reservationsBtnAction() {
+        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+        guard let reservationsTVC = stor.instantiateViewController(withIdentifier: "ReservationsTVC") as? ReservationsTVC else { return }
+        guard let reservations else { return }
+        reservationsTVC.reservations = reservations
+        reservationsTVC.user = user
+        navigationController?.pushViewController(reservationsTVC, animated: true)
     }
     
     
     @IBAction func deleteUserAction() {
         guard let user = Firebase.Auth.auth().currentUser else { return }
-        user.delete { _ in
+        user.delete { [weak self] _ in
             do {
                 try Auth.auth().signOut()
             } catch {
                 print(error)
             }
-            let stor = UIStoryboard(name: "Main", bundle: nil)
-            guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-            self.navigationController?.pushViewController(mainVC, animated: true)
+            self?.ref.removeValue()
+            self?.imageRef.delete(completion: { error in
+                print("\(error)")
+            })
 //            let stor = UIStoryboard(name: "Main", bundle: nil)
 //            guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-//            self.navigationController?.pushViewController(mainVC, animated: true)
+//            self?.navigationController?.pushViewController(mainVC, animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -118,14 +127,14 @@ class ProfileVC: UIViewController {
         let stor = UIStoryboard(name: "ServiceStoryboard", bundle: nil)
         guard let serviceVC = stor.instantiateViewController(withIdentifier: "ServiceVC") as? ServiceVC else { return }
         serviceVC.clientUser = user
-        self.navigationController?.pushViewController(serviceVC, animated: true)
+        navigationController?.pushViewController(serviceVC, animated: true)
     }
     
     @IBAction func seeFeedback() {
         let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
         guard let commentsTVC = stor.instantiateViewController(withIdentifier: "CommentsTVC") as? CommentsTVC else { return }
         commentsTVC.reviews = reviews
-        self.navigationController?.pushViewController(commentsTVC, animated: true)
+        navigationController?.pushViewController(commentsTVC, animated: true)
     }
 
     private func setupUI() {
@@ -137,32 +146,42 @@ class ProfileVC: UIViewController {
             }
         }
         dataManager.getReviews(userUid: user.uid) { [weak self] reviews in
-            self?.reviews = reviews
-            self?.starsLbl.text = Calculating.roundRating(reviews: reviews)
-            self?.countReviewsLbl.text = "Средняя оценка на основании \(reviews?.count ?? 0) голосов"
             if reviews != nil {
                 self?.seeFeedBackBtn.isEnabled = true
             }
+            self?.reviews = reviews
+            self?.starsLbl.text = Calculating.roundRating(reviews: reviews)
+            self?.countReviewsLbl.text = "Средняя оценка на основании \(reviews?.count ?? 0) голосов"
         }
         dataManager.getDataImage(imageRef: imageRef) { [weak self] image in
             self?.avatarImageView.image = image ?? #imageLiteral(resourceName: "default-picture_0_0.png")
             self?.activityIndicatorView.stopAnimating()
             self?.activityIndicatorView.isHidden = true
         }
+        dataManager.getReservations(userUid: user.uid) { [weak self] reservations in
+            if reservations != nil {
+                self?.reservationsBtn.isEnabled = true
+            }
+            self?.reservations = reservations
+            self?.countDogwalking.text = "\(reservations?.count ?? 0) бронирований(-я)"
+            self?.reservationsBtn.setTitle("Бронирования (\(reservations?.count ?? 0))", for: .normal)
+            }
         progressStackView.isHidden = user.role == Role.client.rawValue
         detailsStackView.isHidden = user.role == Role.client.rawValue
         openCommentsBtn.isHidden = user.role == Role.client.rawValue
         searchSitterBtn.isHidden = user.role == Role.dogwalker.rawValue
+        starsLbl.isHidden = user.role == Role.client.rawValue
+        countReviewsLbl.isHidden = user.role == Role.client.rawValue
         nameSurnameLbl.text = "\(user.name) \(user.surname)"
         ageLbl.text = "\(user.age)"
         cityLbl.text = user.city
-        countDogwalking.text = "\(reservations?.count ?? 0) бронирований(-я)"
         aboutYourselfLbl.text = user.infoAboutYourself
         pricePetsittingLbl.text = user.priceOfSitting
         priceDogwalkingLbl.text = user.priceOfWalk
         petTypeLbl.text = user.petType
         petSizeLbl.text = petSize
         seeFeedBackBtn.isEnabled = false
+        reservationsBtn.isEnabled = false
         commonStackView.isHidden = false
     }
     

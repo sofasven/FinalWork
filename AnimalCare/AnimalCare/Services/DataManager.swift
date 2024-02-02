@@ -15,7 +15,6 @@ class DataManager {
         let ref = Database.database().reference(withPath: "users").child(userUid).child("reviews")
         var reviews = [Review]()
         ref.observe(.value) { snapshot in
-            completion(reviews)
             for item in snapshot.children {
                 guard let snapshot = item as? DataSnapshot,
                       let review = Review(snapshot: snapshot) else { return }
@@ -23,6 +22,20 @@ class DataManager {
                 print("\(reviews)")
             }
             completion(reviews)
+        }
+    }
+    
+    func getReservations(userUid: String, completion: @escaping (([Reservation]?) -> Void)) {
+        let ref = Database.database().reference(withPath: "users").child(userUid).child("reservations")
+        var reservations = [Reservation]()
+        ref.observe(.value) { snapshot in
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let reservation = Reservation(snapshot: snapshot) else { return }
+                reservations.append(reservation)
+                print("\(reservations)")
+            }
+            completion(reservations)
         }
     }
     

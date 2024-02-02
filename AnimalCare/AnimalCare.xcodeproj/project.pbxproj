@@ -66,8 +66,6 @@
 		C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB72B532296005DF43C /* SitterProfileVC.swift */; };
 		C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E62AB92B532332005DF43C /* FeedbackVC.swift */; };
 		C7F287C32B66B848002B476F /* ReservationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F287C22B66B848002B476F /* ReservationsTVC.swift */; };
-		C7F287C72B66B896002B476F /* ReservationsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F287C52B66B896002B476F /* ReservationsTVCell.swift */; };
-		C7F287C82B66B896002B476F /* ReservationsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F287C62B66B896002B476F /* ReservationsTVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,8 +102,6 @@
 		C7E62AB72B532296005DF43C /* SitterProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitterProfileVC.swift; sourceTree = "<group>"; };
 		C7E62AB92B532332005DF43C /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		C7F287C22B66B848002B476F /* ReservationsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsTVC.swift; sourceTree = "<group>"; };
-		C7F287C52B66B896002B476F /* ReservationsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsTVCell.swift; sourceTree = "<group>"; };
-		C7F287C62B66B896002B476F /* ReservationsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReservationsTVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +205,6 @@
 				C736E1902B1F43B700F86FB9 /* EditProfileVC.swift */,
 				C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */,
 				C7F287C22B66B848002B476F /* ReservationsTVC.swift */,
-				C7F287C42B66B873002B476F /* ReservationCell */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -265,15 +260,6 @@
 				C734689B2B6551A2003A3D0B /* DataManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		C7F287C42B66B873002B476F /* ReservationCell */ = {
-			isa = PBXGroup;
-			children = (
-				C7F287C52B66B896002B476F /* ReservationsTVCell.swift */,
-				C7F287C62B66B896002B476F /* ReservationsTVCell.xib */,
-			);
-			path = ReservationCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,7 +360,6 @@
 				C721FB5B2B153B7A00893ADF /* Assets.xcassets in Resources */,
 				C721FB592B153B7800893ADF /* Main.storyboard in Resources */,
 				C721FBA82B15485500893ADF /* ProfileStoryboard.storyboard in Resources */,
-				C7F287C82B66B896002B476F /* ReservationsTVCell.xib in Resources */,
 				C721FBAD2B1548E400893ADF /* ServiceStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,7 +375,6 @@
 				C7E62ABA2B532332005DF43C /* FeedbackVC.swift in Sources */,
 				C714A10C2B61A66400633467 /* Review.swift in Sources */,
 				C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */,
-				C7F287C72B66B896002B476F /* ReservationsTVCell.swift in Sources */,
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
 				C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */,
 				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
