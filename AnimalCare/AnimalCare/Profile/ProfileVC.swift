@@ -148,6 +148,8 @@ class ProfileVC: UIViewController {
         dataManager.getReviews(userUid: user.uid) { [weak self] reviews in
             if reviews != nil {
                 self?.seeFeedBackBtn.isEnabled = true
+            } else {
+                print("No reviews")
             }
             self?.reviews = reviews
             self?.starsLbl.text = Calculating.roundRating(reviews: reviews)
@@ -161,6 +163,8 @@ class ProfileVC: UIViewController {
         dataManager.getReservations(userUid: user.uid) { [weak self] reservations in
             if reservations != nil {
                 self?.reservationsBtn.isEnabled = true
+            } else {
+                print("No reservations")
             }
             self?.reservations = reservations
             self?.countDogwalking.text = "\(reservations?.count ?? 0) бронирований(-я)"

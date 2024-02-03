@@ -10,16 +10,16 @@ import Firebase
 
 class ReservationsTVC: UITableViewController {
     
-    var user: User?
+    var user: User!
     var reservations = [Reservation]()
     private var notCompletedReservations = [Reservation]()
     private var completedReservations = [Reservation]()
-    var ref: DatabaseReference!
+    var reference: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Бронирования"
-        ref = Database.database().reference(withPath: "users").child(user?.uid ?? "").child("reservations")
+        reference = Database.database().reference(withPath: "users").child(user?.uid ?? "").child("reservations")
         filteringReservations(reservations: reservations)
     }
     
@@ -44,12 +44,14 @@ class ReservationsTVC: UITableViewController {
             cell.textLabel?.text = reservation.clientName
         }
         cell.detailTextLabel?.text = reservation.data
+        toggleComplition(cell: cell, isCompleted: reservation.isCompleted)
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let _ = tableView.cellForRow(at: indexPath) else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let reservation = reservations[indexPath.row]
         let isCompleted = !reservation.isCompleted
+        toggleComplition(cell: cell, isCompleted: isCompleted)
         reservation.ref.updateChildValues(["isCompleted" : isCompleted])
     }
     
