@@ -97,8 +97,6 @@ class ProfileVC: UIViewController {
     @IBAction func reservationsBtnAction() {
         let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
         guard let reservationsTVC = stor.instantiateViewController(withIdentifier: "ReservationsTVC") as? ReservationsTVC else { return }
-        guard let reservations else { return }
-        reservationsTVC.reservations = reservations
         reservationsTVC.user = user
         navigationController?.pushViewController(reservationsTVC, animated: true)
     }
@@ -106,19 +104,16 @@ class ProfileVC: UIViewController {
     
     @IBAction func deleteUserAction() {
         guard let user = Firebase.Auth.auth().currentUser else { return }
-        user.delete { [weak self] _ in
+        user.delete { [weak self] error in
             do {
                 try Auth.auth().signOut()
             } catch {
                 print(error)
             }
             self?.ref.removeValue()
-            self?.imageRef.delete(completion: { error in
-                print("\(error)")
+            self?.imageRef.delete(completion: { _ in
+                print("Image was deleted")
             })
-//            let stor = UIStoryboard(name: "Main", bundle: nil)
-//            guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-//            self?.navigationController?.pushViewController(mainVC, animated: true)
             self?.navigationController?.popToRootViewController(animated: true)
         }
     }

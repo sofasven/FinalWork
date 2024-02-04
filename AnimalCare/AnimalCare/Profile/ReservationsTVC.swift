@@ -12,32 +12,39 @@ class ReservationsTVC: UITableViewController {
     
     var user: User!
     var reservations = [Reservation]()
-    private var notCompletedReservations = [Reservation]()
-    private var completedReservations = [Reservation]()
-    var reference: DatabaseReference!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Бронирования"
-        reference = Database.database().reference(withPath: "users").child(user?.uid ?? "").child("reservations")
-        filteringReservations(reservations: reservations)
+        ref = Database.database().reference(withPath: "users").child(user?.uid ?? "").child("reservations")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ref.observe(.value) { [weak self] snapshot in
+            var reservations = [Reservation]()
+            for item in snapshot.children {
+                guard let snapshot = item as? DataSnapshot,
+                      let reservation = Reservation(snapshot: snapshot) else { return }
+                reservations.append(reservation)
+            }
+            print("\(reservations)")
+            self?.reservations = reservations
+            self?.tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int { 2 }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? notCompletedReservations.count : completedReservations.count
+        reservations.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        section == 0 ? "Не прошедшие бронирования" : "Прошедшие бронирования"
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let reservation = indexPath.section == 0 ? notCompletedReservations[indexPath.row] : completedReservations[indexPath.row]
+        let reservation = reservations[indexPath.row]
         if user?.role == Role.client.rawValue {
             cell.textLabel?.text = reservation.dogwalkerName
         } else {
@@ -47,25 +54,15 @@ class ReservationsTVC: UITableViewController {
         toggleComplition(cell: cell, isCompleted: reservation.isCompleted)
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        guard let _ = tableView.cellForRow(at: indexPath) else { return }
         let reservation = reservations[indexPath.row]
         let isCompleted = !reservation.isCompleted
-        toggleComplition(cell: cell, isCompleted: isCompleted)
         reservation.ref.updateChildValues(["isCompleted" : isCompleted])
     }
     
     private func toggleComplition(cell: UITableViewCell, isCompleted: Bool) {
         cell.accessoryType = isCompleted ? .checkmark : .none
-    }
-    private func filteringReservations(reservations: [Reservation]) {
-        for reservation in reservations {
-            if reservation.isCompleted {
-                completedReservations.append(reservation)
-            } else {
-                notCompletedReservations.append(reservation)
-            }
-            tableView.reloadData()
-        }
     }
 }
