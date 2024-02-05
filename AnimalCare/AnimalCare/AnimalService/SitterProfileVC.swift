@@ -78,8 +78,9 @@ class SitterProfileVC: UIViewController {
         let dogwalkerName = sitter.name
         let dogwalkerUid = sitter.uid
         let phoneNumberSitter = sitter.phoneNumber
+        let price = typeOfService == TypesOfService.dogsitter.rawValue ? sitter.priceOfSitting : sitter.priceOfWalk
         let phoneNumberClient = clientUser.phoneNumber
-        let data = "\(typeOfService)\n c \(fromDate) по \(toDate)\n \(petSize)\n \(petType)\n Ситтер: \(phoneNumberSitter)\n Клиент: \(phoneNumberClient)"
+        let data = "\(typeOfService)\n c \(fromDate) по \(toDate)\n \(petSize)\n \(petType)\n Ситтер: \(phoneNumberSitter)\n Клиент: \(phoneNumberClient)\n \(price ?? "Уточните стоимость услуги")"
         let reservation = Reservation(clientName: clientName, clientUid: clientUid, dogwalkerName: dogwalkerName, dogwalkerUid: dogwalkerUid, phoneNumberSitter: phoneNumberSitter, phoneNumberClient: phoneNumberClient, isCompleted: false, data: data)
         let reservationRef = ref.child(reservation.dogwalkerUid).child("reservations").child(reservation.clientName)
         reservationRef.setValue(reservation.convertToDictionary())

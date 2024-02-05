@@ -81,15 +81,20 @@ class ProfileVC: UIViewController {
         present(vc, animated: true)
     }
     
+    @IBAction func deletePhoto() {
+        imageRef.delete(completion: { _ in
+            print("Image wasn't deleted")
+        })
+        avatarImageView.image = #imageLiteral(resourceName: "default-picture_0_0.png")
+        
+    }
+    
     @IBAction func signOutAction() {
         do {
             try Auth.auth().signOut()
         } catch {
             print(error)
         }
-//        let stor = UIStoryboard(name: "Main", bundle: nil)
-//        guard let mainVC = stor.instantiateViewController(withIdentifier: "MainVC") as? MainVC else { return }
-//        self.navigationController?.pushViewController(mainVC, animated: true)
         navigationController?.popToRootViewController(animated: true)
     }
     
