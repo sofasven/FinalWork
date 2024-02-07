@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsH-mM-X1s">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715.00000000000011"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gA0-Ky-LvA">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1506.3333333333333"/>
@@ -373,6 +373,8 @@
                         <outlet property="petTypeLbl" destination="BsF-Ts-0tk" id="6Ss-RY-G4U"/>
                         <outlet property="priceDogwalkingLbl" destination="DVG-Nv-ENF" id="2yq-Xq-YZ4"/>
                         <outlet property="pricePetsittingLbl" destination="seJ-gp-dK8" id="r8I-Nf-3mR"/>
+                        <outlet property="priceSittingStackView" destination="psL-2u-nvY" id="MHn-L8-8YO"/>
+                        <outlet property="priceWalkingStackView" destination="ChD-FF-Dj9" id="Gfi-xr-pK4"/>
                         <outlet property="progressStackView" destination="TGU-OL-euD" id="yPJ-BC-48d"/>
                         <outlet property="reservationsBtn" destination="4Mg-Ou-rIj" id="nOL-uP-YJk"/>
                         <outlet property="searchSitterBtn" destination="yAX-lc-VtH" id="ltn-pC-T9Q"/>

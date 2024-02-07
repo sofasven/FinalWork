@@ -46,8 +46,13 @@ class ProfileVC: UIViewController {
     // stacks
     @IBOutlet weak var progressStackView: UIStackView!
     @IBOutlet weak var detailsStackView: UIStackView!
-    
     @IBOutlet weak var commonStackView: UIStackView!
+    
+    @IBOutlet weak var priceWalkingStackView: UIStackView!
+    @IBOutlet weak var priceSittingStackView: UIStackView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +192,8 @@ class ProfileVC: UIViewController {
         seeFeedBackBtn.isEnabled = false
         reservationsBtn.isEnabled = false
         commonStackView.isHidden = false
+        priceWalkingStackView.isHidden = user.typeOfService == TypesOfService.dogsitter.rawValue
+        priceSittingStackView.isHidden = user.typeOfService == TypesOfService.dogwalker.rawValue
     }
     
     private func firstSetupUI() {
