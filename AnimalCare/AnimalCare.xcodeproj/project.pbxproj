@@ -57,6 +57,10 @@
 		C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78384182B1F103300638FCC /* RegistrationVCExt.swift */; };
 		C7A6072E2B4C8D4700B941CE /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */; };
 		C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6072F2B4CB94F00B941CE /* RoundRating.swift */; };
+		C7ABA90C2B74F551008BF44A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA90B2B74F551008BF44A /* OnboardingViewController.swift */; };
+		C7ABA90E2B74F75E008BF44A /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA90D2B74F75E008BF44A /* OnboardingSlide.swift */; };
+		C7ABA9102B74F910008BF44A /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA90F2B74F910008BF44A /* OnboardingCollectionViewCell.swift */; };
+		C7ABA9122B74FA18008BF44A /* OnbordingVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA9112B74FA18008BF44A /* OnbordingVCExt.swift */; };
 		C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */; };
 		C7C380C12B65A11100BF9E01 /* ListOfSittersTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C380BF2B65A11100BF9E01 /* ListOfSittersTVCell.swift */; };
 		C7C380C22B65A11100BF9E01 /* ListOfSittersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C380C02B65A11100BF9E01 /* ListOfSittersTVCell.xib */; };
@@ -93,6 +97,10 @@
 		C78384182B1F103300638FCC /* RegistrationVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVCExt.swift; sourceTree = "<group>"; };
 		C7A6072D2B4C8D4700B941CE /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
 		C7A6072F2B4CB94F00B941CE /* RoundRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRating.swift; sourceTree = "<group>"; };
+		C7ABA90B2B74F551008BF44A /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C7ABA90D2B74F75E008BF44A /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		C7ABA90F2B74F910008BF44A /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7ABA9112B74FA18008BF44A /* OnbordingVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingVCExt.swift; sourceTree = "<group>"; };
 		C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVCExt.swift; sourceTree = "<group>"; };
 		C7C380BF2B65A11100BF9E01 /* ListOfSittersTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfSittersTVCell.swift; sourceTree = "<group>"; };
 		C7C380C02B65A11100BF9E01 /* ListOfSittersTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfSittersTVCell.xib; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		C721FB502B153B7800893ADF /* AnimalCare */ = {
 			isa = PBXGroup;
 			children = (
+				C7ABA90A2B74F4EB008BF44A /* Onboarding */,
 				C7CDCE292B31D70A00EEB1B4 /* Services */,
 				C78384172B1F101B00638FCC /* Extensions */,
 				C721FBB02B154B5700893ADF /* Models */,
@@ -228,6 +237,7 @@
 				C721FBB12B154B6600893ADF /* User.swift */,
 				C714A10B2B61A66400633467 /* Review.swift */,
 				C734689D2B6556D1003A3D0B /* Reservation.swift */,
+				C7ABA90D2B74F75E008BF44A /* OnboardingSlide.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,8 +249,18 @@
 				C736E18E2B1F40F400F86FB9 /* MainVCExt.swift */,
 				C7E272B52B5415B800EB0FF0 /* ProfileVCExt.swift */,
 				C7BD070F2B5D4D8000610884 /* EditProfileVCExt.swift */,
+				C7ABA9112B74FA18008BF44A /* OnbordingVCExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C7ABA90A2B74F4EB008BF44A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C7ABA90B2B74F551008BF44A /* OnboardingViewController.swift */,
+				C7ABA90F2B74F910008BF44A /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C7C380BE2B65A0D200BF9E01 /* Cell */ = {
@@ -378,11 +398,14 @@
 				C721FBA52B15462100893ADF /* InfoVC.swift in Sources */,
 				C7E62AB62B53225C005DF43C /* ListOfSittersTVC.swift in Sources */,
 				C73F43532B17F9F100C893BB /* RegistrationVC.swift in Sources */,
+				C7ABA9122B74FA18008BF44A /* OnbordingVCExt.swift in Sources */,
 				C7E62AB82B532296005DF43C /* SitterProfileVC.swift in Sources */,
+				C7ABA90E2B74F75E008BF44A /* OnboardingSlide.swift in Sources */,
 				C721FBAF2B15493700893ADF /* ServiceVC.swift in Sources */,
 				C78384192B1F103300638FCC /* RegistrationVCExt.swift in Sources */,
 				C734689C2B6551A2003A3D0B /* DataManager.swift in Sources */,
 				C736E18F2B1F40F400F86FB9 /* MainVCExt.swift in Sources */,
+				C7ABA90C2B74F551008BF44A /* OnboardingViewController.swift in Sources */,
 				C7A607302B4CB94F00B941CE /* RoundRating.swift in Sources */,
 				C721FB522B153B7800893ADF /* AppDelegate.swift in Sources */,
 				C734689E2B6556D1003A3D0B /* Reservation.swift in Sources */,
@@ -395,6 +418,7 @@
 				C721FBB22B154B6600893ADF /* User.swift in Sources */,
 				C736E1912B1F43B700F86FB9 /* EditProfileVC.swift in Sources */,
 				C7BD07102B5D4D8000610884 /* EditProfileVCExt.swift in Sources */,
+				C7ABA9102B74F910008BF44A /* OnboardingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
