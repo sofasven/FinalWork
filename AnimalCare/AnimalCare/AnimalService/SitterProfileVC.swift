@@ -134,6 +134,7 @@ class SitterProfileVC: UIViewController {
         petTypeLbl.text = sitter.petType
         petSizeLbl.text = petSize
         seeFeedBackBtn.isEnabled = false
+        navigationItem.title = sitter.name
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

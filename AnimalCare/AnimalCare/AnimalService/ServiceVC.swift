@@ -94,7 +94,6 @@ class ServiceVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
         calendar.scrollDirection = .horizontal
         calendar.scope = .month
         viewCalendar.addSubview(calendar)
-      //  self.view.addSubview(calendar)
         calendar.delegate = self
     }
     
