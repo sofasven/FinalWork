@@ -20,6 +20,8 @@
 				</dict>
 			</array>
 		</dict>
+		<key>Privacy - Photo Library Usage Description</key>
+		<string>Please allow access.</string>
 	</dict>
 </dict>
 </plist>

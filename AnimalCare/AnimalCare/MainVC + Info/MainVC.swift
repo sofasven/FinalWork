@@ -20,7 +20,6 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener({ [weak self] _, user in
             guard let _ = user else { return }
             self?.goToProfile()
@@ -39,6 +38,7 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        errorLbl.isHidden = true
         emailTF.text = nil
         passTF.text = nil
     }
@@ -64,9 +64,6 @@ class MainVC: UIViewController {
     
     
     // MARK: - Privates
-    private func setupUI() {
-        errorLbl.isHidden = true
-    }
     
     @objc
     private func kbWillShow(notification: Notification){

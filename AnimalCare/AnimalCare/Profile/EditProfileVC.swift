@@ -52,6 +52,22 @@ class EditProfileVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         ref = Database.database().reference(withPath: "users")
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        nameTF.delegate = self
+        surnameTF.delegate = self
+        phoneNumberTF.delegate = self
+        ageTF.delegate = self
+        cityTF.delegate = self
+        adressTF.delegate = self
+        priceOfDogwalkingTF.delegate = self
+        priceOfSittingTF.delegate = self
+        aboutYourselfTW.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -62,25 +78,34 @@ class EditProfileVC: UIViewController {
               let name = nameTF.text,
               let surname = surnameTF.text,
               let phoneNumber = phoneNumberTF.text,
-              let phoneNumberInt = Int(phoneNumber),
               let age = ageTF.text,
-              let ageInt = Int(age),
               let city = cityTF.text,
-              let adress = adressTF.text else { return }
+              let adress = adressTF.text else {
+            errorLbl.isHidden = false
+            return
+        }
         let sex = sexSegmentedControl.selectedSegmentIndex == 0 ? "Женский" : "Мужской"
-        let infoAboutYourself = aboutYourselfTW.text.isEmpty ? "" : aboutYourselfTW.text
+        let infoAboutYourself = aboutYourselfTW.text
         // create new user
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
             if let _ = error {
                 self?.errorLbl.isHidden = false
             } else if let user = user {
-                let user = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumberInt, age: ageInt, city: city, address: adress, sex: sex, avatar: nil, progress: nil, infoAboutYourself: infoAboutYourself, detailsOfWalking: self?.chooseDetails(), reviews: nil)
-                let userRef = self?.ref.child(user.uid)
-                userRef?.setValue(user.convertToDictionary())
+                let someUser = User(uid: user.user.uid, email: email, role: role, name: name, surname: surname, phoneNumber: phoneNumber, age: age, city: city, address: adress, sex: sex, avatar: nil, progressOfWalking: nil, progressOfSitting: nil, infoAboutYourself: infoAboutYourself, typeOfService: self?.chooseTypeOfService(), petType: self?.choosePetType(), petSize: self?.choosePetSize(), priceOfWalk: self?.choosePriceOfWalk(), priceOfSitting: self?.choosePriceOfSitting())
+                let userRef = self?.ref.child(someUser.uid)
+                userRef?.setValue(someUser.convertToDictionary())
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                     if let _ = error {
                         self?.errorLbl.isHidden = false
-                    } else if let _ = user {
+                    } else if let user = user {
+                        print(user.user)
+                        let stor = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+                        guard let profileVC = stor.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
+                        else {
+                            print("Failed to create ProfileVC")
+                            return
+                        }
+                        self?.navigationController?.pushViewController(profileVC, animated: true)
                     }
                 }
             }
@@ -89,37 +114,42 @@ class EditProfileVC: UIViewController {
     
     
     
-    private func chooseDetails() -> Details? {
-        let details: Details?
-        let priceOfWalk: String? = dogwalkerSwitch.isOn ? priceOfDogwalkingTF.text : nil
+    private func choosePriceOfSitting() -> String? {
         let priceOfSitting: String? = sitterSwitch.isOn ? priceOfSittingTF.text : nil
-        if role == Role.dogwalker.rawValue {
-            details = Details(typeOfService: chooseTypeOfService(), petType: choosePetType(), petSize: choosePetSize(), priceOfWalk: priceOfWalk, priceOfSitting: priceOfSitting)
-        } else {
-            details = nil
-        }
-        return details
+        return priceOfSitting
+    }
+    private func choosePriceOfWalk() -> String? {
+            let priceOfWalk: String? = dogwalkerSwitch.isOn ? priceOfDogwalkingTF.text : nil
+        return priceOfWalk
     }
     
-    private func choosePetSize() -> [PetSize?] {
-        let petSize: [PetSize?]
-        let small: PetSize? = smallPetSwitch.isOn ? .small : nil
-        let medium: PetSize? = mediumPetSwitch.isOn ? .medium : nil
-        let big: PetSize? = bigPetSwitch.isOn ? .big : nil
-        let veryBig: PetSize? = veryBigPetSwitch.isOn ? .veryBig : nil
-        petSize = [small, medium, big, veryBig]
+    private func choosePetSize() -> [String]? {
+        var petSize: [String] = []
+        if smallPetSwitch.isOn {
+            petSize.append(PetSize.small.rawValue)
+        }
+        if mediumPetSwitch.isOn {
+            petSize.append(PetSize.medium.rawValue)
+        }
+        if bigPetSwitch.isOn {
+            petSize.append(PetSize.big.rawValue)
+        }
+        if veryBigPetSwitch.isOn {
+            petSize.append(PetSize.veryBig.rawValue)
+        }
+        guard !petSize.isEmpty else { return nil }
         return petSize
     }
     
-    private func choosePetType() -> PetType? {
-        let petType: PetType?
+    private func choosePetType() -> String? {
+        let petType: String?
         if dogSwitch.isOn,
            catSwitch.isOn {
-            petType = .both
+            petType = PetType.both.rawValue
         } else if dogSwitch.isOn {
-            petType = .dog
+            petType = PetType.dog.rawValue
         } else if catSwitch.isOn {
-            petType = .cat
+            petType = PetType.cat.rawValue
         } else {
             errorLbl.isHidden = false
             petType = nil
@@ -127,15 +157,15 @@ class EditProfileVC: UIViewController {
         return petType
     }
     
-    private func chooseTypeOfService() -> TypesOfService? {
-        let typeOfService: TypesOfService?
+    private func chooseTypeOfService() -> String? {
+        let typeOfService: String?
         if sitterSwitch.isOn,
            dogwalkerSwitch.isOn {
-            typeOfService = .both
+            typeOfService = TypesOfService.both.rawValue
         } else if sitterSwitch.isOn {
-            typeOfService = .dogsitter
+            typeOfService = TypesOfService.dogsitter.rawValue
         } else if dogwalkerSwitch.isOn {
-            typeOfService = .dogwalker
+            typeOfService = TypesOfService.dogwalker.rawValue
         } else {
             errorLbl.isHidden = false
             typeOfService = nil
@@ -149,14 +179,16 @@ class EditProfileVC: UIViewController {
     }
     
     
-    
-        /*
-        // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destination.
-            // Pass the selected object to the new view controller.
+    @objc
+    private func kbWillShow(notification: Notification){
+        view.frame.origin.y = 0
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y -= keyboardSize.height / 2
         }
-        */
+    }
+    
+    @objc
+    private func kbWillHide(){
+        view.frame.origin.y = 0
+   }
 }
